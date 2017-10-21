@@ -1,0 +1,14 @@
+version: '3'
+services:
+  dbtest:
+    image: healthcheck/mongo:latest
+    container_name: salespaltest
+    ports:
+      - 27017:27017
+    volumes:
+      - ./src/db/scripts:/docker-entrypoint-initdb.d
+    environment:
+      - MONGO_INITDB_DATABASE=salespal
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    

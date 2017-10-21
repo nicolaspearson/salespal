@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    image: mongo:latest
+    container_name: salespal
+    ports:
+      - 27017:27017
+    volumes:
+      - ./src/db/data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=salespal
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    
