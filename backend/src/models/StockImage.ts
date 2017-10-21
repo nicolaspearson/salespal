@@ -142,7 +142,12 @@ export default class StockImage {
 		}
 		delete this.id;
 		if (this.image && this.image.data) {
-			const newImage = new Buffer(this.image.data).toString('base64');
+			let newImage;
+			if (this.image.data.buffer) {
+				newImage = new Buffer(this.image.data.buffer).toString('base64');
+			} else {
+				newImage = new Buffer(this.image.data).toString('base64');
+			}
 			this.image = newImage;
 		}
 		return this;

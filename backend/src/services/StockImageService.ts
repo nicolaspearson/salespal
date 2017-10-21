@@ -44,7 +44,7 @@ export default class StockImageService {
 			const stockImageResult = await this.stockImageRepository.findOneById(
 				objectId
 			);
-			return stockImageResult; // .sanitize();
+			return stockImageResult.sanitize();
 		} catch (error) {
 			if (error instanceof HttpError) {
 				throw error;
