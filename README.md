@@ -1,4 +1,4 @@
-# README #
+# SALESPAL #
 
 This is a SalesPal demo app that use NodeJS, Koa, Typescript, and MongoDB to serve an API, and AngularJS to provide the user interface.
 
@@ -15,9 +15,11 @@ This is a SalesPal demo app that use NodeJS, Koa, Typescript, and MongoDB to ser
 
 # Frontend #
 
-# ------- #
+The frontend was built using AngularJS
 
 # Backend #
+
+The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
 
 ### Running the project ###
 

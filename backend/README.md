@@ -1,6 +1,6 @@
-# README #
+# Backend #
 
-This is NodeJS SalesPal Demo API, using Koa, Typescript, and MongoDB.
+This is a NodeJS SalesPal Demo API, using Koa, Typescript, and MongoDB.
 
 ### How do I get set up? ###
 
@@ -58,6 +58,3 @@ the repository pattern:
 * [Supertest](https://www.npmjs.com/package/supertest)
 * [TS-Mockito](https://www.npmjs.com/package/ts-mockito)
 
-### Contribution guidelines ###
-* Code reviews are done via pull requests
-* Never commit directly to develop, staging, or master
