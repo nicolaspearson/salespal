@@ -13,6 +13,7 @@
         "bodyparser",
         "dbtest",
         "esnext",
+        "fieldname",
         "kcors",
         "middlewares",
         "mockito",

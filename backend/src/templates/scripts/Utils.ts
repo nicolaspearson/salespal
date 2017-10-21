@@ -39,7 +39,7 @@ export async function replaceInFile(
 	pluralize.addSingularRule(/singles$/i, 'singular');
 	const titleCaseSingular: string = firstToUpperCase(moduleName);
 	const titleCasePlural: string = pluralize(titleCaseSingular);
-	const lowerCaseSingular: string = toLowerCase(moduleName);
+	const lowerCaseSingular: string = firstToLowerCase(moduleName);
 	const lowerCasePlural: string = pluralize(lowerCaseSingular);
 
 	// Replace Title Case Plural
@@ -88,6 +88,6 @@ export function firstToUpperCase(str: string) {
 	return str.substr(0, 1).toUpperCase() + str.substr(1);
 }
 
-function toLowerCase(str: string) {
-	return str.toLowerCase();
+function firstToLowerCase(str: string) {
+	return str.substr(0, 1).toLowerCase() + str.substr(1);
 }

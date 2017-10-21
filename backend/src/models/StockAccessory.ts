@@ -6,30 +6,40 @@ import {
 } from 'class-validator';
 import { ObjectID } from 'mongodb';
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
-import { BadRequestError, HttpError } from '../../exceptions';
+import { BadRequestError, HttpError } from '../exceptions';
 
 /**
  * @swagger
  * definitions:
- *   Template:
+ *   StockAccessory:
  *     type: object
  *     properties:
  *       id:
+ *         type: string
+ *       name:
  *         type: string
  *       description:
  *         type: string
  */
 @Entity()
-export default class Template {
+export default class StockAccessory {
 	@ObjectIdColumn({ name: '_id' })
 	private id: ObjectID;
 
-	private templateId: string;
+	private stockAccessoryId: string;
+
+	@Column({ name: 'name' })
+	@Length(1, 255, {
+		message: (args: ValidationArguments) => {
+			return StockAccessory.getGenericValidationLengthMessage(args);
+		}
+	})
+	private name: string;
 
 	@Column({ name: 'description' })
 	@Length(1, 255, {
 		message: (args: ValidationArguments) => {
-			return Template.getGenericValidationLengthMessage(args);
+			return StockAccessory.getGenericValidationLengthMessage(args);
 		}
 	})
 	private description: string;
@@ -42,12 +52,20 @@ export default class Template {
 		this.id = value;
 	}
 
-	public get $templateId(): string {
-		return this.templateId;
+	public get $stockAccessoryId(): string {
+		return this.stockAccessoryId;
 	}
 
-	public set $templateId(value: string) {
-		this.templateId = value;
+	public set $stockAccessoryId(value: string) {
+		this.stockAccessoryId = value;
+	}
+
+	public get $name(): string {
+		return this.name;
+	}
+
+	public set $name(value: string) {
+		this.name = value;
 	}
 
 	public get $description(): string {
@@ -58,36 +76,43 @@ export default class Template {
 		this.description = value;
 	}
 
-	public static newTemplate(obj: {
+	public static newStockAccessory(obj: {
 		id?: ObjectID;
-		templateId?: string;
+		stockAccessoryId?: string;
+		name?: string;
 		description?: string;
 	}) {
-		const newTemplate = new Template();
+		const newStockAccessory = new StockAccessory();
 		if (obj.id) {
-			newTemplate.id = obj.id;
+			newStockAccessory.id = obj.id;
 		}
-		if (obj.templateId) {
-			newTemplate.templateId = obj.templateId;
+		if (obj.stockAccessoryId) {
+			newStockAccessory.stockAccessoryId = obj.stockAccessoryId;
+		}
+		if (obj.name) {
+			newStockAccessory.name = obj.name;
 		}
 		if (obj.description) {
-			newTemplate.description = obj.description;
+			newStockAccessory.description = obj.description;
 		}
-		return newTemplate;
+		return newStockAccessory;
 	}
 
-	public static cloneTemplate(obj: Template) {
-		const newTemplate = new Template();
+	public static cloneStockAccessory(obj: StockAccessory) {
+		const newStockAccessory = new StockAccessory();
 		if (obj.id) {
-			newTemplate.id = obj.id;
+			newStockAccessory.id = obj.id;
 		}
-		if (obj.templateId) {
-			newTemplate.templateId = obj.templateId;
+		if (obj.stockAccessoryId) {
+			newStockAccessory.stockAccessoryId = obj.stockAccessoryId;
+		}
+		if (obj.name) {
+			newStockAccessory.name = obj.name;
 		}
 		if (obj.description) {
-			newTemplate.description = obj.description;
+			newStockAccessory.description = obj.description;
 		}
-		return newTemplate;
+		return newStockAccessory;
 	}
 
 	public static validId(id: ObjectID): boolean {
@@ -114,9 +139,9 @@ export default class Template {
 		}
 	}
 
-	public sanitize(): Template {
+	public sanitize(): StockAccessory {
 		if (this.id) {
-			this.templateId = this.id.toHexString();
+			this.stockAccessoryId = this.id.toHexString();
 		}
 		delete this.id;
 		return this;

@@ -6,12 +6,12 @@ import {
 } from 'class-validator';
 import { ObjectID } from 'mongodb';
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
-import { BadRequestError, HttpError } from '../../exceptions';
+import { BadRequestError, HttpError } from '../exceptions';
 
 /**
  * @swagger
  * definitions:
- *   Template:
+ *   StockItem:
  *     type: object
  *     properties:
  *       id:
@@ -20,16 +20,16 @@ import { BadRequestError, HttpError } from '../../exceptions';
  *         type: string
  */
 @Entity()
-export default class Template {
+export default class StockItem {
 	@ObjectIdColumn({ name: '_id' })
 	private id: ObjectID;
 
-	private templateId: string;
+	private stockItemId: string;
 
 	@Column({ name: 'description' })
 	@Length(1, 255, {
 		message: (args: ValidationArguments) => {
-			return Template.getGenericValidationLengthMessage(args);
+			return StockItem.getGenericValidationLengthMessage(args);
 		}
 	})
 	private description: string;
@@ -42,12 +42,12 @@ export default class Template {
 		this.id = value;
 	}
 
-	public get $templateId(): string {
-		return this.templateId;
+	public get $stockItemId(): string {
+		return this.stockItemId;
 	}
 
-	public set $templateId(value: string) {
-		this.templateId = value;
+	public set $stockItemId(value: string) {
+		this.stockItemId = value;
 	}
 
 	public get $description(): string {
@@ -58,36 +58,36 @@ export default class Template {
 		this.description = value;
 	}
 
-	public static newTemplate(obj: {
+	public static newStockItem(obj: {
 		id?: ObjectID;
-		templateId?: string;
+		stockItemId?: string;
 		description?: string;
 	}) {
-		const newTemplate = new Template();
+		const newStockItem = new StockItem();
 		if (obj.id) {
-			newTemplate.id = obj.id;
+			newStockItem.id = obj.id;
 		}
-		if (obj.templateId) {
-			newTemplate.templateId = obj.templateId;
+		if (obj.stockItemId) {
+			newStockItem.stockItemId = obj.stockItemId;
 		}
 		if (obj.description) {
-			newTemplate.description = obj.description;
+			newStockItem.description = obj.description;
 		}
-		return newTemplate;
+		return newStockItem;
 	}
 
-	public static cloneTemplate(obj: Template) {
-		const newTemplate = new Template();
+	public static cloneStockItem(obj: StockItem) {
+		const newStockItem = new StockItem();
 		if (obj.id) {
-			newTemplate.id = obj.id;
+			newStockItem.id = obj.id;
 		}
-		if (obj.templateId) {
-			newTemplate.templateId = obj.templateId;
+		if (obj.stockItemId) {
+			newStockItem.stockItemId = obj.stockItemId;
 		}
 		if (obj.description) {
-			newTemplate.description = obj.description;
+			newStockItem.description = obj.description;
 		}
-		return newTemplate;
+		return newStockItem;
 	}
 
 	public static validId(id: ObjectID): boolean {
@@ -114,9 +114,9 @@ export default class Template {
 		}
 	}
 
-	public sanitize(): Template {
+	public sanitize(): StockItem {
 		if (this.id) {
-			this.templateId = this.id.toHexString();
+			this.stockItemId = this.id.toHexString();
 		}
 		delete this.id;
 		return this;
