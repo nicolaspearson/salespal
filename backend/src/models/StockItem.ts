@@ -1,9 +1,13 @@
 import {
+	IsInt,
 	Length,
+	Max,
+	Min,
 	validate,
 	ValidationArguments,
 	ValidationError
 } from 'class-validator';
+import * as moment from 'moment-timezone';
 import { ObjectID } from 'mongodb';
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
 import { BadRequestError, HttpError } from '../exceptions';
@@ -14,9 +18,37 @@ import { BadRequestError, HttpError } from '../exceptions';
  *   StockItem:
  *     type: object
  *     properties:
- *       id:
+ *       stockItemId:
  *         type: string
- *       description:
+ *       registrationNumber:
+ *         type: string
+ *       make:
+ *         type: string
+ *       model:
+ *         type: string
+ *       modelYear:
+ *         type: number
+ *       odometer:
+ *         type: number
+ *       colour:
+ *         type: string
+ *       vin:
+ *         type: string
+ *       retailPrice:
+ *         type: string
+ *       costPrice:
+ *         type: string
+ *       accessories:
+ *         type: array
+ *         items:
+ *           type: string
+ *       images:
+ *         type: array
+ *         items:
+ *           type: string
+ *       createdAt:
+ *         type: string
+ *       updatedAt:
  *         type: string
  */
 @Entity()
@@ -26,13 +58,85 @@ export default class StockItem {
 
 	private stockItemId: string;
 
-	@Column({ name: 'description' })
+	@Column({ name: 'registration_number' })
+	@Length(4, 255, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private registrationNumber: string;
+
+	@Column({ name: 'make' })
 	@Length(1, 255, {
 		message: (args: ValidationArguments) => {
 			return StockItem.getGenericValidationLengthMessage(args);
 		}
 	})
-	private description: string;
+	private make: string;
+
+	@Column({ name: 'model' })
+	@Length(1, 255, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private model: string;
+
+	@Column({ name: 'model_year', type: 'integer' })
+	@IsInt()
+	@Min(1950)
+	@Max(2100)
+	private modelYear: number;
+
+	@Column({ name: 'odometer', type: 'integer' })
+	@IsInt()
+	@Min(0)
+	@Max(10000000)
+	private odometer: number;
+
+	@Column({ name: 'colour' })
+	@Length(1, 255, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private colour: string;
+
+	@Column({ name: 'vin' })
+	@Length(1, 255, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private vin: string;
+
+	@Column({ name: 'retail_price' })
+	@Length(1, 50, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private retailPrice: string;
+
+	@Column({ name: 'cost_price' })
+	@Length(1, 50, {
+		message: (args: ValidationArguments) => {
+			return StockItem.getGenericValidationLengthMessage(args);
+		}
+	})
+	private costPrice: string;
+
+	@Column({ name: 'accessories' })
+	private accessories: string[];
+
+	@Column({ name: 'images' })
+	private images: string[];
+
+	@Column({ name: 'created_at' })
+	private createdAt: Date | string;
+
+	@Column({ name: 'updated_at', type: 'date' })
+	private updatedAt: Date | string;
 
 	public get $id(): ObjectID {
 		return this.id;
@@ -50,18 +154,126 @@ export default class StockItem {
 		this.stockItemId = value;
 	}
 
-	public get $description(): string {
-		return this.description;
+	public get $registrationNumber(): string {
+		return this.registrationNumber;
 	}
 
-	public set $description(value: string) {
-		this.description = value;
+	public set $registrationNumber(value: string) {
+		this.registrationNumber = value;
+	}
+
+	public get $make(): string {
+		return this.make;
+	}
+
+	public set $make(value: string) {
+		this.make = value;
+	}
+
+	public get $model(): string {
+		return this.model;
+	}
+
+	public set $model(value: string) {
+		this.model = value;
+	}
+
+	public get $modelYear(): number {
+		return this.modelYear;
+	}
+
+	public set $modelYear(value: number) {
+		this.modelYear = value;
+	}
+
+	public get $odometer(): number {
+		return this.odometer;
+	}
+
+	public set $odometer(value: number) {
+		this.odometer = value;
+	}
+
+	public get $colour(): string {
+		return this.colour;
+	}
+
+	public set $colour(value: string) {
+		this.colour = value;
+	}
+
+	public get $vin(): string {
+		return this.vin;
+	}
+
+	public set $vin(value: string) {
+		this.vin = value;
+	}
+
+	public get $retailPrice(): string {
+		return this.retailPrice;
+	}
+
+	public set $retailPrice(value: string) {
+		this.retailPrice = value;
+	}
+
+	public get $costPrice(): string {
+		return this.costPrice;
+	}
+
+	public set $costPrice(value: string) {
+		this.costPrice = value;
+	}
+
+	public get $accessories(): string[] {
+		return this.accessories;
+	}
+
+	public set $accessories(value: string[]) {
+		this.accessories = value;
+	}
+
+	public get $images(): string[] {
+		return this.images;
+	}
+
+	public set $images(value: string[]) {
+		this.images = value;
+	}
+
+	public get $createdAt(): Date | string {
+		return this.createdAt;
+	}
+
+	public set $createdAt(value: Date | string) {
+		this.createdAt = value;
+	}
+
+	public get $updatedAt(): Date | string {
+		return this.updatedAt;
+	}
+
+	public set $updatedAt(value: Date | string) {
+		this.updatedAt = value;
 	}
 
 	public static newStockItem(obj: {
 		id?: ObjectID;
 		stockItemId?: string;
-		description?: string;
+		registrationNumber?: string;
+		make?: string;
+		model?: string;
+		modelYear?: number;
+		odometer?: number;
+		colour?: string;
+		vin?: string;
+		retailPrice?: string;
+		costPrice?: string;
+		accessories?: string[];
+		images?: string[];
+		createdAt?: Date | string;
+		updatedAt?: Date | string;
 	}) {
 		const newStockItem = new StockItem();
 		if (obj.id) {
@@ -70,8 +282,44 @@ export default class StockItem {
 		if (obj.stockItemId) {
 			newStockItem.stockItemId = obj.stockItemId;
 		}
-		if (obj.description) {
-			newStockItem.description = obj.description;
+		if (obj.registrationNumber) {
+			newStockItem.registrationNumber = obj.registrationNumber;
+		}
+		if (obj.make) {
+			newStockItem.make = obj.make;
+		}
+		if (obj.model) {
+			newStockItem.model = obj.model;
+		}
+		if (obj.modelYear) {
+			newStockItem.modelYear = obj.modelYear;
+		}
+		if (obj.odometer) {
+			newStockItem.odometer = obj.odometer;
+		}
+		if (obj.colour) {
+			newStockItem.colour = obj.colour;
+		}
+		if (obj.vin) {
+			newStockItem.vin = obj.vin;
+		}
+		if (obj.retailPrice) {
+			newStockItem.retailPrice = obj.retailPrice;
+		}
+		if (obj.costPrice) {
+			newStockItem.costPrice = obj.costPrice;
+		}
+		if (obj.accessories) {
+			newStockItem.accessories = obj.accessories;
+		}
+		if (obj.images) {
+			newStockItem.images = obj.images;
+		}
+		if (obj.createdAt) {
+			newStockItem.createdAt = obj.createdAt;
+		}
+		if (obj.updatedAt) {
+			newStockItem.updatedAt = obj.updatedAt;
 		}
 		return newStockItem;
 	}
@@ -84,8 +332,44 @@ export default class StockItem {
 		if (obj.stockItemId) {
 			newStockItem.stockItemId = obj.stockItemId;
 		}
-		if (obj.description) {
-			newStockItem.description = obj.description;
+		if (obj.registrationNumber) {
+			newStockItem.registrationNumber = obj.registrationNumber;
+		}
+		if (obj.make) {
+			newStockItem.make = obj.make;
+		}
+		if (obj.model) {
+			newStockItem.model = obj.model;
+		}
+		if (obj.modelYear) {
+			newStockItem.modelYear = obj.modelYear;
+		}
+		if (obj.odometer) {
+			newStockItem.odometer = obj.odometer;
+		}
+		if (obj.colour) {
+			newStockItem.colour = obj.colour;
+		}
+		if (obj.vin) {
+			newStockItem.vin = obj.vin;
+		}
+		if (obj.retailPrice) {
+			newStockItem.retailPrice = obj.retailPrice;
+		}
+		if (obj.costPrice) {
+			newStockItem.costPrice = obj.costPrice;
+		}
+		if (obj.accessories) {
+			newStockItem.accessories = obj.accessories;
+		}
+		if (obj.images) {
+			newStockItem.images = obj.images;
+		}
+		if (obj.createdAt) {
+			newStockItem.createdAt = obj.createdAt;
+		}
+		if (obj.updatedAt) {
+			newStockItem.updatedAt = obj.updatedAt;
 		}
 		return newStockItem;
 	}
@@ -119,6 +403,18 @@ export default class StockItem {
 			this.stockItemId = this.id.toHexString();
 		}
 		delete this.id;
+		if (this.createdAt) {
+			const localCreatedAt = moment(this.createdAt)
+				.tz(moment.tz.guess())
+				.format('YYYY-MM-DD HH:mm:ssZ');
+			this.createdAt = localCreatedAt;
+		}
+		if (this.updatedAt) {
+			const localUpdatedAt = moment(this.updatedAt)
+				.tz(moment.tz.guess())
+				.format('YYYY-MM-DD HH:mm:ssZ');
+			this.updatedAt = localUpdatedAt;
+		}
 		return this;
 	}
 

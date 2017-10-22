@@ -1,3 +1,4 @@
+import * as moment from 'moment';
 import { ObjectID } from 'mongodb';
 import { Inject } from 'typedi';
 import { BadRequestError, HttpError, InternalServerError } from '../exceptions';
@@ -60,6 +61,11 @@ export default class StockItemService {
 			if (!stockItemIsValid) {
 				throw new BadRequestError('Incorrect / invalid parameters supplied');
 			}
+			const now = moment(new Date().toISOString()).format(
+				'YYYY-MM-DD HH:mm:ssZ'
+			);
+			stockItem.$createdAt = moment(now).toDate();
+			stockItem.$updatedAt = moment(now).toDate();
 			// Save the stock item to the database
 			const stockItemResult = await this.stockItemRepository.save(stockItem);
 			return stockItemResult.sanitize();

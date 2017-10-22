@@ -1,3 +1,4 @@
+// import { validate, ValidationError } from 'class-validator';
 import { KoaMiddlewareInterface, Middleware } from 'routing-controllers';
 import * as Exceptions from '../../exceptions';
 
@@ -13,6 +14,24 @@ export class ErrorMiddleware implements KoaMiddlewareInterface {
 			let httpError: Exceptions.HttpError = new Exceptions.InternalServerError(
 				'An unknown internal server error occurred'
 			);
+			if (
+				error &&
+				error.errors &&
+				error.errors.length > 0 &&
+				error.errors instanceof Array
+			) {
+				try {
+					error = new Exceptions.BadRequestError(
+						'Validation failed on the provided request',
+						error.errors
+					);
+				} catch (error) {
+					error = new Exceptions.BadRequestError(
+						'Unable to validate request: ' + error
+					);
+				}
+			}
+
 			if (error) {
 				if (!(error instanceof Exceptions.HttpError)) {
 					const statusCode = error.status || error.httpCode || 500;

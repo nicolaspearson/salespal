@@ -14,7 +14,7 @@ import { BadRequestError, HttpError } from '../exceptions';
  *   StockAccessory:
  *     type: object
  *     properties:
- *       id:
+ *       stockAccessoryId:
  *         type: string
  *       name:
  *         type: string

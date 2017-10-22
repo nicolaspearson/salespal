@@ -182,7 +182,10 @@ export default class StockItemController {
 	 */
 	@Post('/stockItems')
 	@Authorized()
-	public async saveStockItem(@Body() stockItem: StockItem) {
+	public async saveStockItem(
+		@Body({ validate: { validationError: { target: false } } })
+		stockItem: StockItem
+	) {
 		if (stockItem.$id) {
 			stockItem.$id = new ObjectID(stockItem.$id);
 		} else if (stockItem.$stockItemId) {

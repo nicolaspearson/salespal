@@ -15,7 +15,7 @@ import { BadRequestError, HttpError } from '../exceptions';
  *   StockImage:
  *     type: object
  *     properties:
- *       id:
+ *       stockImageId:
  *         type: string
  *       name:
  *         type: string

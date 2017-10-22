@@ -80,6 +80,12 @@ export class HttpError extends Error {
 		if (this.validationErrors) {
 			this.validation = [] as HttpValidationError[];
 			for (const validationError of this.validationErrors) {
+				if (validationError.target) {
+					delete validationError.target;
+				}
+				if (validationError.children) {
+					delete validationError.children;
+				}
 				const messages = Object.keys(validationError.constraints).map(
 					key => validationError.constraints[key]
 				);
