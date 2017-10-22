@@ -9,13 +9,36 @@ This is a SalesPal demo app that use NodeJS, Koa, Typescript, and MongoDB to ser
 * Clone the repository
 * Install Docker
 
-### Contribution guidelines ###
-* Code reviews are done via pull requests
-* Never commit directly to develop, staging, or master
-
 # Frontend #
 
-The frontend was built using AngularJS
+The frontend was built using AngularJS.
+
+### Running the project ###
+
+1. Run `npm install / yarn install`
+2. Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+3. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+4. Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+### Generating new Components ###
+
+* Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Frontend technologies used: ##
+
+### For the application ###
+
+* [AngularJS](https://angular.io/)
+* [Angular Material](https://material.angular.io)
+* [Socket.IO](https://www.npmjs.com/package/socket.io)
+* [Typescript](https://www.typescriptlang.org/)
+
+### For testing
+
+* [Jasmine](https://jasmine.github.io/)
+* [Karma](https://karma-runner.github.io)
+* [Protractor](http://www.protractortest.org/)
 
 # Backend #
 
@@ -33,7 +56,19 @@ The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
 8. Run `npm run test:unit` to execute the unit tests.
 9. To customize, update the configuration parameters in `./config/default.yml` and the docker compose .yml files
 
-## Technologies used: ##
+### Generating new Controllers, Models, Repositories, and Services ###
+
+There is generate command available via npm run
+
+This is just helper to get going quicker, if you have a new table 'Fish' in your database,
+you can use this command to help generate all of the boilerplate scaffolding required when using
+the repository pattern:
+
+* Run `npm run generate`
+* Select the component that you would like to generate, e.g. `All` will generate a Controller, Model, Repository, and Service
+* Provide a name for the component, e.g. `Fish`
+
+## Backend technologies used: ##
 
 ### For the application ###
 
