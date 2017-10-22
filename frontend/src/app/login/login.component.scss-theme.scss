@@ -1,0 +1,14 @@
+@import '~@angular/material/theming';
+@mixin login-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    .login__main__container {
+        mat-card {
+            .login__form {
+                .login__button {
+                    color: mat-color($accent, default-contrast);
+                }
+            }
+        }
+    }
+}

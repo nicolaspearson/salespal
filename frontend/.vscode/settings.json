@@ -1,9 +1,13 @@
 {
 	"cSpell.words": [
+		"Injectable",
+		"Sidenav",
 		"Truthy",
+		"classlist",
 		"codelyzer",
 		"hammerjs",
 		"jasminewd",
+		"ngrx",
 		"polyfills",
 		"salespal"
 	],

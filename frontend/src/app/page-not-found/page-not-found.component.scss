@@ -1,0 +1,37 @@
+@import 'styles-variables';
+.page__not__found__main__container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 400px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.2;
+    margin: 0;
+    color: $color-page-not-found-detail;
+    text-align: center;
+    div {
+        vertical-align: middle;
+        margin: 2em auto;
+    }
+    h1 {
+        color: $color-page-not-found-title;
+        font-size: 2em;
+        font-weight: 400;
+    }
+    p {
+        margin: 0 auto;
+        width: 500px;
+    }
+    @media only screen and (max-width: 500px) {
+        div,
+        p {
+            width: 95%;
+        }
+        h1 {
+            font-size: 1.5em;
+            margin: 0 0 0.3em;
+        }
+    }
+}

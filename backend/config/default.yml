@@ -4,7 +4,7 @@ server:
     docs: api-docs
     host: localhost
     port: 3000
-    whitelist: ['http://localhost:3000']
+    whitelist: ['http://localhost:3000', 'http://localhost:4200']
   auth:
     accessToken: 'SecretAccessToken'
     testToken: 'SecretTestToken'
