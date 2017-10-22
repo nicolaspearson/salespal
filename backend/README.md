@@ -1,4 +1,4 @@
-# Backend #
+# Node SALESPAL #
 
 This is a NodeJS SalesPal Demo API, using Koa, Typescript, and MongoDB.
 
@@ -11,7 +11,7 @@ This is a NodeJS SalesPal Demo API, using Koa, Typescript, and MongoDB.
 
 ### Running the project ###
 
-1. Run `yarn install`
+1. Run `npm install / yarn install`
 2. Run `docker-compose up`, this will run the container for the MongoDB.
 3. Run `docker ps` to find the name of the docker container.
 4. Run `docker exec -i -t <docker-container-name> /bin/bash` to open a bash in the container, e.g. `docker exec -i -t salespal /bin/bash`
