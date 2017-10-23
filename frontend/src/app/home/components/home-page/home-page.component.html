@@ -1,3 +1,1 @@
-<div class="home__page__main__container">
-	<app-home-table (submitted)="onSubmit($event)" [pending]="pending$ | async" [errorMessage]="error$ | async"></app-home-table>
-</div>
+<app-home-table [stockItems]="stockItems$ | async" [pending]=" pending$ | async " [errorMessage]="error$ | async "></app-home-table>

@@ -175,6 +175,10 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-4.1.0.tgz#a67f5abb71bdb2fea1fa9b751a4f38435674a6a8"
 
+"@ngrx/entity@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@ngrx/entity/-/entity-4.1.0.tgz#549e4f9a4e40b8a3ff2200bd268a29b6c1b1f525"
+
 "@ngrx/router-store@~4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.1.0.tgz#ac77969c38c406cc6f0d1537e7e78502ace03b9a"

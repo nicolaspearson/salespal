@@ -1,5 +1,1 @@
-<mat-card>
-	<mat-card-content>
-		<h1>Home</h1>
-	</mat-card-content>
-</mat-card>
+<app-home-table-item *ngFor="let stockItem of stockItems" [stockItem]="stockItem"></app-home-table-item>

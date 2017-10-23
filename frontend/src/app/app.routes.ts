@@ -6,8 +6,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 export const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	{
-		path: '**',
-		component: PageNotFoundComponent,
+		path: 'items',
+		loadChildren: './home/home.module#HomeModule',
 		canActivate: [AuthGuard]
+	},
+	{
+		path: '**',
+		component: PageNotFoundComponent
 	}
 ];

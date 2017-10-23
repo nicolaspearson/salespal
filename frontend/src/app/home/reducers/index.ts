@@ -1,11 +1,9 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import * as fromHome from './home.reducer';
-import * as fromHomePage from './home-page.reducer';
 
 export interface HomeState {
-	status: fromHome.State;
-	homePage: fromHomePage.State;
+	home: fromHome.State;
 }
 
 export interface State extends fromRoot.State {
@@ -13,30 +11,77 @@ export interface State extends fromRoot.State {
 }
 
 export const reducers = {
-	status: fromHome.reducer,
-	homePage: fromHomePage.reducer
+	home: fromHome.reducer
 };
 
-export const selectHomeState = createFeatureSelector<HomeState>('home');
+export const getHomeState = createFeatureSelector<HomeState>('home');
 
-export const selectHomeStatusState = createSelector(
-	selectHomeState,
-	(state: HomeState) => state.status
+export const getStockItemEntitiesState = createSelector(
+	getHomeState,
+	state => state.home
 );
+
+export const getSelectedStockItemId = createSelector(
+	getStockItemEntitiesState,
+	fromHome.getSelectedId
+);
+
 export const getStockItems = createSelector(
-	selectHomeStatusState,
+	getStockItemEntitiesState,
 	fromHome.getStockItems
 );
 
-export const selectHomePageState = createSelector(
-	selectHomeState,
-	(state: HomeState) => state.homePage
-);
 export const getHomePageError = createSelector(
-	selectHomePageState,
-	fromHomePage.getError
+	getStockItemEntitiesState,
+	fromHome.getError
 );
+
 export const getHomePagePending = createSelector(
-	selectHomePageState,
-	fromHomePage.getPending
+	getStockItemEntitiesState,
+	fromHome.getPending
+);
+
+export const getStockItemIdList = createSelector(
+	getStockItemEntitiesState,
+	fromHome.getIds
+);
+
+export const {
+	selectIds: getStockItemIds,
+	selectEntities: getStockItemEntities,
+	selectAll: getAllStockItems,
+	selectTotal: getTotalStockItems
+} = fromHome.adapter.getSelectors(getStockItemEntitiesState);
+
+export const getSelectedStockItem = createSelector(
+	getStockItemEntities,
+	getSelectedStockItemId,
+	(entities, selectedId) => {
+		return selectedId && entities[selectedId];
+	}
+);
+
+export const getStockItemCollection = createSelector(
+	getStockItemEntities,
+	getStockItemIdList,
+	(entities, ids) => {
+		return ids.map(id => entities[id]);
+	}
+);
+
+export const isSelectedStockItemInCollection = createSelector(
+	getStockItemIdList,
+	getSelectedStockItemId,
+	(ids, selected) => {
+		return ids.indexOf(selected) > -1;
+	}
+);
+
+export const getCollectionLoaded = createSelector(
+	getStockItemEntitiesState,
+	fromHome.getPending
+);
+export const getCollectionLoading = createSelector(
+	getStockItemEntitiesState,
+	fromHome.getPending
 );

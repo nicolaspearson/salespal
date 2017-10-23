@@ -11,6 +11,8 @@ import * as moment from 'moment-timezone';
 import { ObjectID } from 'mongodb';
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
 import { BadRequestError, HttpError } from '../exceptions';
+import StockAccessory from './StockAccessory';
+import StockImage from './StockImage';
 
 /**
  * @swagger
@@ -138,6 +140,10 @@ export default class StockItem {
 	@Column({ name: 'updated_at', type: 'date' })
 	private updatedAt: Date | string;
 
+	private stockAccessories: StockAccessory[];
+
+	private stockImages: StockImage[];
+
 	public get $id(): ObjectID {
 		return this.id;
 	}
@@ -256,6 +262,22 @@ export default class StockItem {
 
 	public set $updatedAt(value: Date | string) {
 		this.updatedAt = value;
+	}
+
+	public get $stockAccessories(): StockAccessory[] {
+		return this.stockAccessories;
+	}
+
+	public set $stockAccessories(value: StockAccessory[]) {
+		this.stockAccessories = value;
+	}
+
+	public get $stockImages(): StockImage[] {
+		return this.stockImages;
+	}
+
+	public set $stockImages(value: StockImage[]) {
+		this.stockImages = value;
 	}
 
 	public static newStockItem(obj: {
