@@ -14,12 +14,11 @@ import {
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AuthModule } from './auth/auth.module';
+import { HomeModule } from './home/home.module';
 import { CoreModule } from '@app/core';
 import { SharedModule } from './shared/shared.module';
 import { CustomRouterStateSerializer } from './shared/utils';
 import { reducers, metaReducers } from './reducers';
-
-import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { routes } from './app.routes';
@@ -27,7 +26,7 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 
 @NgModule({
-	declarations: [AppComponent, HomeComponent, PageNotFoundComponent],
+	declarations: [AppComponent, PageNotFoundComponent],
 	imports: [
 		// Angular
 		BrowserModule,
@@ -58,7 +57,8 @@ import { environment } from '../environments/environment';
 		CoreModule,
 		SharedModule,
 		// Features
-		AuthModule.forRoot()
+		AuthModule.forRoot(),
+		HomeModule.forRoot()
 	],
 	providers: [
 		/**

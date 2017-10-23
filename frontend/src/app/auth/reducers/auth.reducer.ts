@@ -1,10 +1,6 @@
 import * as auth from '../actions/auth.actions';
 import { User } from '../models/user';
 
-import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-
-export const LS_USER_KEY = 'LS_USER';
-
 export interface State {
 	loggedIn: boolean;
 	user: User | null;
@@ -25,6 +21,7 @@ export function reducer(state = initialState, action: auth.Actions): State {
 			};
 		}
 
+		case auth.LOGIN_REDIRECT:
 		case auth.LOGOUT: {
 			return initialState;
 		}

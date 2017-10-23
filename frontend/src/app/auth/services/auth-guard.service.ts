@@ -8,7 +8,7 @@ import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 
 import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-import { LS_USER_KEY } from '../reducers/auth.reducer';
+import { LS_USER_KEY } from '../../core/local-storage/keys';
 import { User } from '../models/user';
 
 @Injectable()
@@ -29,7 +29,7 @@ export class AuthGuard implements CanActivate {
 						return true;
 					}
 					this.store.dispatch(new Auth.LoginRedirect());
-					return true;
+					return false;
 				}
 
 				return true;

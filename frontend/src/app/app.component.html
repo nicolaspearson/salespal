@@ -5,6 +5,10 @@
 				<img [src]="logo" />{{title}}
 			</span>
 
+			<button mat-button class="logout-button" *ngIf="isAuthenticated" (click)="onLogoutClick()">
+				LOGOUT
+			</button>
+
 			<span class="link">
 				<a matTooltip="Source" matTooltipPosition="below" mat-icon-button href="https://github.com/nicolaspearson/salespal" target="_blank">
 					<i class="fa fa-github fa-2x"></i>

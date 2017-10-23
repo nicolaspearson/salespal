@@ -1,0 +1,14 @@
+@import 'styles-variables';
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 72px 0;
+}
+
+mat-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -23,9 +23,21 @@
         img {
             height: 40px;
             width: auto;
-            padding-right: 8px;
+            padding-right: 1em;
             align-content: center;
         }
+        font-size: 0.850em;
+        font-family: 'Roboto-Light';
+        color: $color-black;
+    }
+
+    .logout-button {
+        line-height: 35px;
+        margin-right: 10px;
+        color: $color-black;
+        font-family: 'Roboto-Light';
+        font-size: 0.625em;
+        border: 1px solid $color-black;
     }
 
     .link {

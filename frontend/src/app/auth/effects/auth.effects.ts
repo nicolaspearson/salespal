@@ -2,7 +2,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/exhaustMap';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/take';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions } from '@ngrx/effects';
@@ -12,7 +11,7 @@ import { AuthService } from '../services/auth.service';
 import * as Auth from '../actions/auth.actions';
 
 import { LocalStorageService } from '../../core/local-storage/local-storage.service';
-import { LS_USER_KEY } from '../reducers/auth.reducer';
+import { LS_USER_KEY } from '../../core/local-storage/keys';
 
 @Injectable()
 export class AuthEffects {
@@ -45,16 +44,10 @@ export class AuthEffects {
 		.do(() => this.router.navigate(['/']));
 
 	@Effect({ dispatch: false })
-	logout$ = this.actions$
-		.ofType(Auth.LOGOUT)
-		.do(action =>
-			this.localStorageService.setItem(LS_USER_KEY, { user: null })
-		);
-
-	@Effect({ dispatch: false })
 	loginRedirect$ = this.actions$
 		.ofType(Auth.LOGIN_REDIRECT, Auth.LOGOUT)
 		.do(authed => {
+			this.localStorageService.setItem(LS_USER_KEY, { user: null });
 			this.router.navigate(['/login']);
 		});
 }
