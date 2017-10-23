@@ -8,14 +8,6 @@
 @import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
 @include mat-core();
 @import 'styles-reset.scss-theme';
-@import 'app/app.component.scss-theme';
-@import 'app/home/home.component.scss-theme';
-@import 'app/login/login.component.scss-theme';
-@import 'app/page-not-found/page-not-found.component.scss-theme';
 @mixin custom-components-theme($theme) {
     @include app-styles-reset-theme($theme);
-    @include app-component-theme($theme);
-    @include home-component-theme($theme);
-    @include login-component-theme($theme);
-    @include page-not-found-component-theme($theme);
 }

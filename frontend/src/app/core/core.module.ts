@@ -1,12 +1,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 import { LocalStorageService } from './local-storage/local-storage.service';
-import { authReducer } from './auth/auth.reducer';
-import { AuthEffects } from './auth/auth.effects';
 
 export function getInitialState() {
 	return LocalStorageService.loadInitialState();
@@ -16,16 +12,7 @@ export function getInitialState() {
 	imports: [
 		// Angular
 		CommonModule,
-		HttpClientModule,
-
-		// Ngrx
-		StoreModule.forRoot(
-			{
-				auth: authReducer
-			},
-			{ initialState: getInitialState }
-		),
-		EffectsModule.forRoot([AuthEffects])
+		HttpClientModule
 	],
 	declarations: [],
 	providers: [LocalStorageService]

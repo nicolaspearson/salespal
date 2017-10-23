@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'SALESPAL';
-	logo = require('../assets/logo_black.png');
+	logo = require('../assets/logo.png');
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-const APP_PREFIX = 'APP-';
+import { environment as env } from '@env/environment';
 
 @Injectable()
 export class LocalStorageService {
@@ -8,10 +8,10 @@ export class LocalStorageService {
 
 	static loadInitialState() {
 		return Object.keys(localStorage).reduce((state: any, storageKey) => {
-			if (storageKey.includes(APP_PREFIX)) {
+			if (storageKey.includes(env.appStoragePrefix)) {
 				state = state || {};
 				const stateKey = storageKey
-					.replace(APP_PREFIX, '')
+					.replace(env.appStoragePrefix, '')
 					.toLowerCase()
 					.split('.');
 				let currentStateRef = state;
@@ -25,14 +25,17 @@ export class LocalStorageService {
 				});
 			}
 			return state;
-		}, undefined);
+		}, null);
 	}
 
 	setItem(key: string, value: any) {
-		localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
+		localStorage.setItem(
+			`${env.appStoragePrefix}${key}`,
+			JSON.stringify(value)
+		);
 	}
 
 	getItem(key: string) {
-		return JSON.parse(localStorage.getItem(`${APP_PREFIX}${key}`));
+		return JSON.parse(localStorage.getItem(`${env.appStoragePrefix}${key}`));
 	}
 }

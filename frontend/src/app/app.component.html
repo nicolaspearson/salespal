@@ -1,14 +1,15 @@
 <mat-sidenav-container>
 	<div class="app__main__container">
 		<mat-toolbar color="primary">
-			<span routerLink="" class="title__container">
+			<span routerLink="/" class="title__container">
 				<img [src]="logo" />{{title}}
 			</span>
 
-			<a matTooltip="Github" class="link" matdTooltipPosition="before" mat-icon-button href="https://github.com/nicolaspearson/salespal"
-			 target="_blank">
-				<i class="fa fa-github fa-2x"></i>
-			</a>
+			<span class="link">
+				<a matTooltip="Source" matTooltipPosition="below" mat-icon-button href="https://github.com/nicolaspearson/salespal" target="_blank">
+					<i class="fa fa-github fa-2x"></i>
+				</a>
+			</span>
 
 		</mat-toolbar>
 		<div class="app__route__content">

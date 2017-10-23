@@ -179,6 +179,10 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.1.0.tgz#ac77969c38c406cc6f0d1537e7e78502ace03b9a"
 
+"@ngrx/store-devtools@github:ngrx/store-devtools-builds":
+  version "4.0.0"
+  resolved "https://codeload.github.com/ngrx/store-devtools-builds/tar.gz/aec82d3a0d6f77aac2dcabe1e2b939cfa4a24aca"
+
 "@ngrx/store@~4.1.0":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-4.1.0.tgz#8c074cbc6197e259cd9492e85a76c3c67dbea173"
@@ -1410,6 +1414,10 @@ deep-equal@^1.0.1:
 deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
+
+deep-freeze-strict@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/deep-freeze-strict/-/deep-freeze-strict-1.1.1.tgz#77d0583ca24a69be4bbd9ac2fae415d55523e5b0"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -3401,6 +3409,12 @@ ncname@1.0.x:
 negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
+
+ngrx-store-freeze@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.2.0.tgz#74c231947bbe1938af722f6a72624dc69788d39f"
+  dependencies:
+    deep-freeze-strict "^1.1.1"
 
 no-case@^2.2.0:
   version "2.3.2"

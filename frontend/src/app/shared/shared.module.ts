@@ -17,7 +17,8 @@ import {
 	MatCardModule,
 	MatListModule,
 	MatIconModule,
-	MatTooltipModule
+	MatTooltipModule,
+	MatFormFieldModule
 } from '@angular/material';
 
 @NgModule({
@@ -38,7 +39,8 @@ import {
 		MatListModule,
 		MatMenuModule,
 		MatIconModule,
-		MatTooltipModule
+		MatTooltipModule,
+		MatFormFieldModule
 	],
 	exports: [
 		CommonModule,
@@ -57,7 +59,8 @@ import {
 		MatSelectModule,
 		MatToolbarModule,
 		MatIconModule,
-		MatTooltipModule
+		MatTooltipModule,
+		MatFormFieldModule
 	]
 })
 export class SharedModule {}

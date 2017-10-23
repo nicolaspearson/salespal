@@ -2,6 +2,11 @@ const packageJson = require('../../package.json');
 
 export const environment = {
 	appName: 'SalesPal',
+	appStoragePrefix: 'SP-PROD-APP-',
+	api: {
+		endpoint: 'http://localhost:3000/api/v1',
+		accessToken: 'SecretAccessToken'
+	},
 	envName: 'PROD',
 	production: true,
 	versions: {

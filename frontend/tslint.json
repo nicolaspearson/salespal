@@ -104,7 +104,6 @@
 		"invoke-injectable": true,
 		"trailing-comma": false,
 		"no-internal-module": true,
-		"no-null-keyword": true,
 		"jsdoc-format": true
 	}
 }
