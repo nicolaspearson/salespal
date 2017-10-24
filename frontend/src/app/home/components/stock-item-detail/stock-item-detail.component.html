@@ -1,11 +1,85 @@
-<mat-card *ngIf="stockItem">
-	<mat-card-title>
-		{{ registrationNumber | appEllipsis:35 }}
-	</mat-card-title>
-	<mat-card-subtitle *ngIf="make">
-		{{ make | appEllipsis:40 }} {{ model | appEllipsis }}
-	</mat-card-subtitle>
+<mat-card>
 	<mat-card-content>
-		<img mat-card-sm-image *ngIf="thumbnail" [src]="thumbnail" />
+		<mat-grid-list cols="2" rowHeight="400px">
+			<mat-grid-tile>
+				<form novalidate class="stock__item__detail__form" [formGroup]="form" (ngSubmit)="submit()" [formGroup]="form">
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formRegistrationNumber" placeholder="Registration Number">
+						<mat-error *ngIf="form.get('formRegistrationNumber').touched && form.get('formRegistrationNumber').hasError('required')">
+							Registration number is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formMake" placeholder="Make">
+						<mat-error *ngIf="form.get('formMake').touched && form.get('formMake').hasError('required')">
+							Make is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formModel" placeholder="Model">
+						<mat-error *ngIf="form.get('formModel').touched && form.get('formModel').hasError('required')">
+							Model is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formModelYear" placeholder="Model Year">
+						<mat-error *ngIf="form.get('formModelYear').touched && form.get('formModelYear').hasError('required')">
+							Model Year is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formOdometer" placeholder="Odometer">
+						<mat-error *ngIf="form.get('formOdometer').touched && form.get('formOdometer').hasError('required')">
+							Odometer is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formColour" placeholder="Colour">
+						<mat-error *ngIf="form.get('formColour').touched && form.get('formColour').hasError('required')">
+							Colour is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formVin" placeholder="VIN">
+						<mat-error *ngIf="form.get('formVin').touched && form.get('formVin').hasError('required')">
+							VIN is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formRetailPrice" placeholder="Retail Price">
+						<mat-error *ngIf="form.get('formRetailPrice').touched && form.get('formRetailPrice').hasError('required')">
+							RetailPrice is required
+						</mat-error>
+					</mat-form-field>
+
+					<mat-form-field class="stock__item__detail__input">
+						<input matInput type="text" formControlName="formCostPrice" placeholder="Cost Price">
+						<mat-error *ngIf="form.get('formCostPrice').touched && form.get('formCostPrice').hasError('required')">
+							CostPrice is required
+						</mat-error>
+					</mat-form-field>
+				</form>
+			</mat-grid-tile>
+			<mat-grid-tile>
+				<img mat-card-sm-image *ngIf="thumbnail" [src]="thumbnail" />
+			</mat-grid-tile>
+		</mat-grid-list>
+
+		<p *ngIf="errorMessage" class="stock__item__detail__error">
+			{{errorMessage}}
+		</p>
+
+		<p>
+			<button class="stock__item__detail__button" type="submit" [disabled]="form.invalid" mat-raised-button color="primary">
+				SAVE
+			</button>
+		</p>
 	</mat-card-content>
 </mat-card>

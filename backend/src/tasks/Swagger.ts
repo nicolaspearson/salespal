@@ -6,7 +6,7 @@ import swaggerJSDoc = require('swagger-jsdoc');
 
 const controllers = glob.sync(path.resolve('src/controllers/*.ts'));
 const errors = glob.sync(path.resolve('src/exceptions/*.ts'));
-const models = glob.sync(path.resolve('src/models/*.ts'));
+const models = glob.sync(path.resolve('src/models/**/*.ts'));
 
 const apiHost = config.get('server.api.host');
 const apiBasePath = config.get('server.api.basePath');

@@ -1,18 +1,10 @@
 @import 'styles-variables';
-.container {
-    margin-top: 20px;
-}
-
-.main-heading {
-    text-transform: uppercase;
-    margin: 0 0 20px 0;
-}
-
 img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    align-content: center;
+    width: 300px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 mat-card {
@@ -23,7 +15,7 @@ mat-card {
         position: relative;
     }
     mat-card-subtitle {
-        min-height: 60px;
+        min-height: 30px;
     }
     @media (max-width: map-get($grid-breakpoints, sm)) {
         mat-card-subtitle {

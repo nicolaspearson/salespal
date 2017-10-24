@@ -245,7 +245,10 @@ export default class TemplateController {
 		@Param('id') id: string,
 		@Body() template: Template
 	) {
-		if (String(id) !== String(template.$id)) {
+		if (
+			String(id) !== String(template.$id) &&
+			String(id) !== template.$templateId
+		) {
 			throw new BadRequestError(
 				'An id mismatch error occurred. The id supplied in the url parameter does not match the supplied object'
 			);

@@ -211,7 +211,10 @@ export default class UserController {
 		@Body({ validate: false })
 		user: User
 	): Promise<User> {
-		if (!user || String(id) !== String(user.$id)) {
+		if (
+			!user ||
+			(String(id) !== String(user.$id) && String(id) !== String(user.$userId))
+		) {
 			throw new BadRequestError(
 				'An id mismatch error occurred. The id supplied in the url parameter does not match the supplied object'
 			);
@@ -290,16 +293,19 @@ export default class UserController {
 	 *         description: api access token
 	 *         required: true
 	 *         type: string
-	 *       - name: username
+	 *       - name: loginRequest
 	 *         in: body
-	 *         description: username of the user
+	 *         description: The users login credentials
 	 *         required: true
-	 *         type: string
-	 *       - name: password
-	 *         in: body
-	 *         description: password of the user
-	 *         required: true
-	 *         type: string
+	 *         schema:
+	 *           type: object
+	 *           properties:
+	 *             username:
+	 *               description: username of the user
+	 *               type: string
+	 *             password:
+	 *               type: string
+	 *               description: password of the user
 	 *     responses:
 	 *       200:
 	 *         description: The users token

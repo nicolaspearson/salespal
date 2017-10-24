@@ -26,31 +26,19 @@ export const COMPONENTS = [
 	HomeTableComponent,
 	HomeTableItemComponent,
 	StockItemPageComponent,
-	StockItemDetailComponent,
-	StockItemSelectedComponent
+	StockItemSelectedComponent,
+	StockItemDetailComponent
 ];
 
 @NgModule({
-	imports: [CommonModule, ReactiveFormsModule, SharedModule, PipesModule],
-	declarations: COMPONENTS,
-	exports: COMPONENTS,
-	providers: [StockItemExistsGuard]
-})
-export class HomeModule {
-	static forRoot(): ModuleWithProviders {
-		return {
-			ngModule: RootHomeModule,
-			providers: [HomeService]
-		};
-	}
-}
-
-@NgModule({
 	imports: [
-		HomeModule,
+		CommonModule,
+		ReactiveFormsModule,
+		SharedModule,
+		PipesModule,
 		RouterModule.forChild([
 			{
-				path: 'home',
+				path: '',
 				component: HomePageComponent,
 				data: {
 					title: 'Home'
@@ -65,6 +53,10 @@ export class HomeModule {
 		]),
 		StoreModule.forFeature('home', reducers),
 		EffectsModule.forFeature([HomeEffects])
-	]
+	],
+	declarations: COMPONENTS,
+	exports: COMPONENTS,
+	providers: [HomeService, StockItemExistsGuard]
 })
-export class RootHomeModule {}
+@NgModule({})
+export class HomeModule {}

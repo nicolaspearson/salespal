@@ -248,7 +248,10 @@ export default class StockItemController {
 		@Param('id') id: string,
 		@Body() stockItem: StockItem
 	) {
-		if (String(id) !== String(stockItem.$id)) {
+		if (
+			String(id) !== String(stockItem.$id) &&
+			String(id) !== stockItem.$stockItemId
+		) {
 			throw new BadRequestError(
 				'An id mismatch error occurred. The id supplied in the url parameter does not match the supplied object'
 			);

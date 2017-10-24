@@ -36,11 +36,6 @@ export const getHomePageError = createSelector(
 	fromHome.getError
 );
 
-export const getHomePagePending = createSelector(
-	getStockItemEntitiesState,
-	fromHome.getPending
-);
-
 export const getStockItemIdList = createSelector(
 	getStockItemEntitiesState,
 	fromHome.getIds
@@ -79,9 +74,9 @@ export const isSelectedStockItemInCollection = createSelector(
 
 export const getCollectionLoaded = createSelector(
 	getStockItemEntitiesState,
-	fromHome.getPending
+	fromHome.getLoaded
 );
 export const getCollectionLoading = createSelector(
 	getStockItemEntitiesState,
-	fromHome.getPending
+	fromHome.getLoading
 );

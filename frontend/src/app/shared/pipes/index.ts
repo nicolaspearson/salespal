@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { AddCommasPipe } from './add-commas';
 import { EllipsisPipe } from './ellipsis';
 
-export const PIPES = [AddCommasPipe, EllipsisPipe];
+export const PIPES = [EllipsisPipe];
 
 @NgModule({
 	declarations: PIPES,

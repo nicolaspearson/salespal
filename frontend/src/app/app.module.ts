@@ -57,8 +57,8 @@ import { environment } from '../environments/environment';
 		CoreModule,
 		SharedModule,
 		// Features
-		AuthModule.forRoot(),
-		HomeModule.forRoot()
+		AuthModule.forRoot()
+		// HomeModule.forRoot()
 	],
 	providers: [
 		/**

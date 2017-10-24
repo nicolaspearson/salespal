@@ -20,7 +20,7 @@ import { BadRequestError, HttpError } from '../exceptions';
  *       name:
  *         type: string
  *       image:
- *         type: file
+ *         type: object
  */
 @Entity()
 export default class StockImage {

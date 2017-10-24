@@ -7,7 +7,8 @@ export interface State extends EntityState<StockItem> {
 	stockItems: StockItem[];
 	ids: string[];
 	error: string | null;
-	pending: boolean;
+	loaded: boolean;
+	loading: boolean;
 }
 
 export const adapter: EntityAdapter<StockItem> = createEntityAdapter<
@@ -22,7 +23,8 @@ export const initialState: State = adapter.getInitialState({
 	stockItems: [],
 	ids: [],
 	error: null,
-	pending: false
+	loaded: false,
+	loading: false
 });
 
 export function reducer(state = initialState, action: Home.Actions): State {
@@ -31,7 +33,7 @@ export function reducer(state = initialState, action: Home.Actions): State {
 			return {
 				...state,
 				error: null,
-				pending: true
+				loading: true
 			};
 		}
 
@@ -39,7 +41,8 @@ export function reducer(state = initialState, action: Home.Actions): State {
 			return {
 				...adapter.addMany(action.payload, state),
 				error: null,
-				pending: false,
+				loaded: true,
+				loading: false,
 				selectedStockItemId: state.selectedStockItemId,
 				ids: action.payload.map(stockItem => stockItem.stockItemId)
 			};
@@ -49,15 +52,15 @@ export function reducer(state = initialState, action: Home.Actions): State {
 			return {
 				...state,
 				error: action.payload,
-				pending: false
+				loaded: true,
+				loading: false
 			};
 		}
 
 		case Home.SELECT_STOCK_ITEM: {
 			return {
 				...state,
-				selectedStockItemId: action.payload,
-				pending: false
+				selectedStockItemId: action.payload
 			};
 		}
 
@@ -69,8 +72,7 @@ export function reducer(state = initialState, action: Home.Actions): State {
 
 			return {
 				...state,
-				ids: [...state.ids, action.payload.stockItemId],
-				pending: false
+				ids: [...state.ids, action.payload.stockItemId]
 			};
 		}
 
@@ -78,8 +80,7 @@ export function reducer(state = initialState, action: Home.Actions): State {
 		case Home.ADD_STOCK_ITEM_FAILURE: {
 			return {
 				...state,
-				ids: state.ids.filter(id => id !== action.payload.stockItemId),
-				pending: false
+				ids: state.ids.filter(id => id !== action.payload.stockItemId)
 			};
 		}
 
@@ -99,4 +100,6 @@ export const getIds = (state: State) => state.ids;
 
 export const getError = (state: State) => state.error;
 
-export const getPending = (state: State) => state.pending;
+export const getLoaded = (state: State) => state.loaded;
+
+export const getLoading = (state: State) => state.loading;

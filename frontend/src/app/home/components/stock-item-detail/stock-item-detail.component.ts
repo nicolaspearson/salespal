@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { routerTransition } from '@app/core';
 
 import { StockItem } from '../../models/stockItem';
@@ -14,9 +15,42 @@ export class StockItemDetailComponent implements OnInit {
 	@Input() inCollection: boolean;
 	@Output() remove = new EventEmitter<StockItem>();
 
-	constructor() {}
+	form: FormGroup;
 
-	ngOnInit() {}
+	@Input()
+	set pending(isPending: boolean) {
+		if (isPending) {
+			this.form.disable();
+		} else {
+			this.form.enable();
+		}
+	}
+
+	@Input() errorMessage: string | null;
+
+	@Output() submitted = new EventEmitter<StockItem>();
+
+	constructor(private formBuilder: FormBuilder) {}
+
+	ngOnInit() {
+		this.form = this.formBuilder.group({
+			formRegistrationNumber: [this.registrationNumber, Validators.required],
+			formMake: [this.make, Validators.required],
+			formModel: [this.model, Validators.required],
+			formModelYear: [this.modelYear, Validators.required],
+			formOdometer: [this.odometer, Validators.required],
+			formColour: [this.colour, Validators.required],
+			formVin: [this.vin, Validators.required],
+			formRetailPrice: [this.retailPrice, Validators.required],
+			formCostPrice: [this.costPrice, Validators.required]
+		});
+	}
+
+	submit() {
+		if (this.form.valid) {
+			this.submitted.emit(this.form.value);
+		}
+	}
 
 	get id() {
 		return this.stockItem.stockItemId;

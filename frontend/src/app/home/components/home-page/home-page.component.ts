@@ -18,7 +18,6 @@ import { environment as env } from '@env/environment';
 	animations: [routerTransition]
 })
 export class HomePageComponent implements OnInit {
-	pending$ = this.store.select(fromHome.getHomePagePending);
 	error$ = this.store.select(fromHome.getHomePageError);
 
 	stockItems$: Observable<StockItem[]> = this.store.select(

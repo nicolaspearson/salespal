@@ -1,1 +1,18 @@
+div {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+}
 
+button {
+    z-index: 100;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 25px;
+}
+
+mat-icon {
+    color: #000;
+}

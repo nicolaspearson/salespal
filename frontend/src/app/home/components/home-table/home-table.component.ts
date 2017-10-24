@@ -10,11 +10,6 @@ import { StockItem } from '../../models/stockItem';
 	animations: [routerTransition]
 })
 export class HomeTableComponent implements OnInit {
-	@Input()
-	set pending(isPending: boolean) {
-		// Show loading state
-	}
-
 	@Input() errorMessage: string | null;
 
 	@Input() stockItems: StockItem[];

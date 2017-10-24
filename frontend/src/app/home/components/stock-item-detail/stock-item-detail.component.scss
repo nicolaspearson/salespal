@@ -1,38 +1,66 @@
 @import 'styles-variables';
-.container {
-    margin-top: 20px;
-}
-
-.main-heading {
-    text-transform: uppercase;
-    margin: 0 0 20px 0;
+:host {
+    display: flex;
+    flex: 1;
+    height: 550px;
+    width: 100%;
 }
 
 img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-    align-content: center;
+    min-width: 400px;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 mat-card {
-    width: 350px;
-    height: auto;
+    display: inherit;
+    height: 100%;
+    width: 100%;
     margin: 20px;
-    mat-card-title {
-        position: relative;
-    }
-    mat-card-subtitle {
-        min-height: 60px;
-    }
-    @media (max-width: map-get($grid-breakpoints, sm)) {
-        mat-card-subtitle {
-            min-height: auto;
-        }
-    }
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
-mat-card:hover {
-    cursor: pointer;
-    box-shadow: 3px 3px 14px -1px rgb(0, 0, 0);
+mat-card-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+mat-grid-list {
+    height: 100%;
+    width: 100%;
+}
+
+mat-grid-tile {
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.stock__item__detail__form {
+    height: 100%;
+}
+
+.stock__item__detail__input {
+    margin-top: 0.625em;
+    width: 100%;
+}
+
+.stock__item__detail__error {
+    margin-top: 1em;
+    width: 300px;
+    color: red;
+}
+
+.stock__item__detail__button {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    padding: 0.625em;
+    width: 300px;
+    align-items: center;
 }
