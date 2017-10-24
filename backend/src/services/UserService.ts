@@ -198,4 +198,22 @@ export default class UserService {
 			throw new InternalServerError(error.message || error);
 		}
 	}
+
+	// This method will create a default test account if it does not exist
+	public async createTestAccount(): Promise<User | undefined> {
+		try {
+			const users: User[] = await this.findAll();
+			if (users.length < 1) {
+				const user: User = User.newUser({
+					username: 'Tester',
+					password: 'hello123',
+					emailAddress: 'tester@test.com'
+				});
+				return await this.save(user);
+			}
+		} catch (error) {
+			throw error;
+		}
+		return;
+	}
 }

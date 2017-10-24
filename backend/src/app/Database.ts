@@ -3,10 +3,14 @@ import * as Koa from 'koa';
 import * as path from 'path';
 import { Inject } from 'typedi';
 import { Connection, ConnectionOptions, createConnection } from 'typeorm';
+import User from '../models/User';
+import UserService from '../services/UserService';
 import AppLogger from './AppLogger';
 
 export class Database {
 	@Inject() private appLogger: AppLogger;
+
+	@Inject() private userService: UserService;
 
 	private connection: Connection;
 
@@ -19,6 +23,10 @@ export class Database {
 		try {
 			if (!this.connection) {
 				this.connection = await createConnection(this.getConnectionOptions());
+			}
+			const user: User | undefined = await this.userService.createTestAccount();
+			if (user && user !== undefined) {
+				this.appLogger.winston.debug('Test User Added!');
 			}
 		} catch (error) {
 			throw error;
