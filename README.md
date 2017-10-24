@@ -42,21 +42,21 @@ The frontend was built using AngularJS.
 
 ### Screenshots
 
-## Login: ##
+### Login: ###
 
-[url=http://postimg.org/image/5c8r8i7i5n/][img]https://s1.postimg.org/5c8r8i7i5n/Screen_Shot_2017-10-24_at_11.09.42_PM.png[/img][/url]
+![Alt text](https://s1.postimg.org/17d5weac33/Screen_Shot_2017-10-24_at_11.09.42_PM.png "Login")
 
-## Stock Items: ##
+### Stock Items: ###
 
-[url=http://postimg.org/image/74r8vqrvhn/][img]https://s1.postimg.org/74r8vqrvhn/Screen_Shot_2017-10-24_at_11.10.15_PM.png[/img][/url]
+![Alt text](https://s1.postimg.org/87qy6mnpdb/Screen_Shot_2017-10-24_at_11.10.15_PM.png "Stock Items")
 
-## Stock Items Edit / Delete: ##
+### Stock Items Edit / Delete: ###
 
-[url=http://postimg.org/image/6n1775rs7f/][img]https://s1.postimg.org/6n1775rs7f/Screen_Shot_2017-10-24_at_11.10.34_PM.png[/img][/url]
+![Alt text](https://s1.postimg.org/3vs4z35o5r/Screen_Shot_2017-10-24_at_11.10.34_PM.png "Edit / Delete")
 
-## Stock Items Create: ##
+### Stock Items Create: ###
 
-[url=http://postimg.org/image/1lwd1f6pmz/][img]https://s1.postimg.org/1lwd1f6pmz/Screen_Shot_2017-10-24_at_11.11.25_PM.png[/img][/url]
+![Alt text](https://s1.postimg.org/70uvjulv0v/Screen_Shot_2017-10-24_at_11.11.25_PM.png "Create")
 
 # Backend #
 
@@ -73,6 +73,15 @@ The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
 7. Run `npm start` to run the application.
 8. Run `npm run test:unit` to execute the unit tests.
 9. To customize, update the configuration parameters in `./config/default.yml` and the docker compose .yml files
+
+### Auth and Credentials ###
+
+The server automatically creates the following test credentials if there are no users in the database:
+
+* Username: `Tester`
+* Password: `hello123`
+
+You can use these credentials to execute the `../users/login` api call and retrieve a JWT token.
 
 ### Generating new Controllers, Models, Repositories, and Services ###
 
