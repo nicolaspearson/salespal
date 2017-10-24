@@ -65,6 +65,7 @@ export function reducer(state = initialState, action: Home.Actions): State {
 		}
 
 		case Home.ADD_STOCK_ITEM_SUCCESS:
+		case Home.UPDATE_STOCK_ITEM_SUCCESS:
 		case Home.REMOVE_STOCK_ITEM_FAILURE: {
 			if (state.ids.indexOf(action.payload.stockItemId) > -1) {
 				return state;
@@ -77,7 +78,8 @@ export function reducer(state = initialState, action: Home.Actions): State {
 		}
 
 		case Home.REMOVE_STOCK_ITEM_SUCCESS:
-		case Home.ADD_STOCK_ITEM_FAILURE: {
+		case Home.ADD_STOCK_ITEM_FAILURE:
+		case Home.UPDATE_STOCK_ITEM_FAILURE: {
 			return {
 				...state,
 				ids: state.ids.filter(id => id !== action.payload.stockItemId)
@@ -103,3 +105,24 @@ export const getError = (state: State) => state.error;
 export const getLoaded = (state: State) => state.loaded;
 
 export const getLoading = (state: State) => state.loading;
+
+export const getNewStockItem = () => {
+	return {
+		stockItemId: 'new',
+		registrationNumber: '',
+		make: '',
+		model: '',
+		modelYear: null,
+		odometer: null,
+		colour: '',
+		vin: '',
+		retailPrice: '',
+		costPrice: '',
+		accessories: [],
+		images: [],
+		createdAt: '',
+		updatedAt: '',
+		stockAccessories: [],
+		stockImages: []
+	};
+};

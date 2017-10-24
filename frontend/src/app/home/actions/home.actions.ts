@@ -11,6 +11,9 @@ export const SELECT_STOCK_ITEM = 'HOME/SELECT_STOCK_ITEM';
 export const ADD_STOCK_ITEM = 'HOME/ADD_STOCK_ITEM';
 export const ADD_STOCK_ITEM_SUCCESS = 'HOME/ADD_STOCK_ITEM_SUCCESS';
 export const ADD_STOCK_ITEM_FAILURE = 'HOME/ADD_STOCK_ITEM_FAILURE';
+export const UPDATE_STOCK_ITEM = 'HOME/UPDATE_STOCK_ITEM';
+export const UPDATE_STOCK_ITEM_SUCCESS = 'HOME/UPDATE_STOCK_ITEM_SUCCESS';
+export const UPDATE_STOCK_ITEM_FAILURE = 'HOME/UPDATE_STOCK_ITEM_FAILURE';
 export const REMOVE_STOCK_ITEM = 'HOME/REMOVE_STOCK_ITEM';
 export const REMOVE_STOCK_ITEM_SUCCESS = 'HOME/REMOVE_STOCK_ITEM_SUCCESS';
 export const REMOVE_STOCK_ITEM_FAILURE = 'HOME/REMOVE_STOCK_ITEM_FAILURE';
@@ -78,6 +81,24 @@ export class AddStockItemFailure implements Action {
 	constructor(public payload: StockItem) {}
 }
 
+export class UpdateStockItem implements Action {
+	readonly type = UPDATE_STOCK_ITEM;
+
+	constructor(public payload: StockItem) {}
+}
+
+export class UpdateStockItemSuccess implements Action {
+	readonly type = UPDATE_STOCK_ITEM_SUCCESS;
+
+	constructor(public payload: StockItem) {}
+}
+
+export class UpdateStockItemFailure implements Action {
+	readonly type = UPDATE_STOCK_ITEM_FAILURE;
+
+	constructor(public payload: StockItem) {}
+}
+
 export class RemoveStockItem implements Action {
 	readonly type = REMOVE_STOCK_ITEM;
 
@@ -111,6 +132,9 @@ export type Actions =
 	| AddStockItem
 	| AddStockItemSuccess
 	| AddStockItemFailure
+	| UpdateStockItem
+	| UpdateStockItemSuccess
+	| UpdateStockItemFailure
 	| RemoveStockItem
 	| RemoveStockItemSuccess
 	| RemoveStockItemFailure;

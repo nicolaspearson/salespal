@@ -13,42 +13,42 @@ import { StockItem } from '../../models/stockItem';
 export class StockItemDetailComponent implements OnInit {
 	@Input() stockItem: StockItem;
 	@Input() inCollection: boolean;
+	@Input() errorMessage: string | null;
+	@Output() add = new EventEmitter<StockItem>();
 	@Output() remove = new EventEmitter<StockItem>();
+	@Output() update = new EventEmitter<StockItem>();
+
+	isCreate: boolean;
 
 	form: FormGroup;
-
-	@Input()
-	set pending(isPending: boolean) {
-		if (isPending) {
-			this.form.disable();
-		} else {
-			this.form.enable();
-		}
-	}
-
-	@Input() errorMessage: string | null;
-
-	@Output() submitted = new EventEmitter<StockItem>();
 
 	constructor(private formBuilder: FormBuilder) {}
 
 	ngOnInit() {
+		if (this.stockItem.stockItemId === 'new') {
+			this.isCreate = true;
+		}
+
 		this.form = this.formBuilder.group({
-			formRegistrationNumber: [this.registrationNumber, Validators.required],
-			formMake: [this.make, Validators.required],
-			formModel: [this.model, Validators.required],
-			formModelYear: [this.modelYear, Validators.required],
-			formOdometer: [this.odometer, Validators.required],
-			formColour: [this.colour, Validators.required],
-			formVin: [this.vin, Validators.required],
-			formRetailPrice: [this.retailPrice, Validators.required],
-			formCostPrice: [this.costPrice, Validators.required]
+			registrationNumber: [this.registrationNumber, Validators.required],
+			make: [this.make, Validators.required],
+			model: [this.model, Validators.required],
+			modelYear: [this.modelYear, Validators.required],
+			odometer: [this.odometer, Validators.required],
+			colour: [this.colour, Validators.required],
+			vin: [this.vin, Validators.required],
+			retailPrice: [this.retailPrice, Validators.required],
+			costPrice: [this.costPrice, Validators.required]
 		});
 	}
 
-	submit() {
+	submitUpdate() {
 		if (this.form.valid) {
-			this.submitted.emit(this.form.value);
+			if (this.isCreate) {
+				this.add.emit(this.form.value);
+			} else {
+				this.update.emit(this.form.value);
+			}
 		}
 	}
 

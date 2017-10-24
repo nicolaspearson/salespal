@@ -89,4 +89,110 @@ export class HomeService {
 		}
 		return null;
 	}
+
+	addStockItem(stockItem: StockItem): Observable<StockItem> {
+		// Get the current logged in user
+		const result = this.localStorageService.getItem(LS_USER_KEY);
+		if (result && result.user && result.user.token) {
+			const user: User = result.user;
+			const options = new RequestOptions({ headers: new Headers() });
+			options.headers.set('Content-Type', 'application/json');
+			options.headers.set('Authorization', `Bearer ${user.token}`);
+			return (
+				this.http
+					.post(`${environment.api.endpoint}/stockItems`, stockItem, options)
+					// If successful, dispatch success action with result
+					.map(res => {
+						if (res && res.status === 200 && res.text()) {
+							const jsonResponse = JSON.parse(res.text());
+							if (jsonResponse && jsonResponse.data) {
+								return jsonResponse.data;
+							}
+						}
+						_throw('Adding stock item failed');
+					})
+					// If request fails, dispatch failed action
+					.catch(() =>
+						_throw('An error occurred connecting to the remote data source')
+					)
+			);
+		} else {
+			// Dispatch a logout event in order to clear
+			// state and storage credentials correctly
+			this.authStore.dispatch(new Auth.LoginRedirect());
+		}
+	}
+
+	updateStockItem(stockItem: StockItem): Observable<StockItem> {
+		// Get the current logged in user
+		const result = this.localStorageService.getItem(LS_USER_KEY);
+		if (result && result.user && result.user.token) {
+			const user: User = result.user;
+			const options = new RequestOptions({ headers: new Headers() });
+			options.headers.set('Content-Type', 'application/json');
+			options.headers.set('Authorization', `Bearer ${user.token}`);
+			return (
+				this.http
+					.put(
+						`${environment.api.endpoint}/stockItems/${stockItem.stockItemId}`,
+						stockItem,
+						options
+					)
+					// If successful, dispatch success action with result
+					.map(res => {
+						if (res && res.status === 200 && res.text()) {
+							const jsonResponse = JSON.parse(res.text());
+							if (jsonResponse && jsonResponse.data) {
+								return jsonResponse.data;
+							}
+						}
+						_throw('Updating stock item failed');
+					})
+					// If request fails, dispatch failed action
+					.catch(() =>
+						_throw('An error occurred connecting to the remote data source')
+					)
+			);
+		} else {
+			// Dispatch a logout event in order to clear
+			// state and storage credentials correctly
+			this.authStore.dispatch(new Auth.LoginRedirect());
+		}
+	}
+
+	removeStockItem(stockItem: StockItem): Observable<StockItem> {
+		// Get the current logged in user
+		const result = this.localStorageService.getItem(LS_USER_KEY);
+		if (result && result.user && result.user.token) {
+			const user: User = result.user;
+			const options = new RequestOptions({ headers: new Headers() });
+			options.headers.set('Content-Type', 'application/json');
+			options.headers.set('Authorization', `Bearer ${user.token}`);
+			return (
+				this.http
+					.delete(
+						`${environment.api.endpoint}/stockItems/${stockItem.stockItemId}`,
+						options
+					)
+					// If successful, dispatch success action with result
+					.map(res => {
+						if (res && res.status === 200 && res.text()) {
+							const jsonResponse = JSON.parse(res.text());
+							if (jsonResponse && jsonResponse.data) {
+								return jsonResponse.data;
+							}
+						}
+						_throw('Removing stock item failed');
+					})
+					// If request fails, dispatch failed action
+					.catch(() =>
+						_throw('An error occurred connecting to the remote data source')
+					)
+			);
+		} else {
+			// Dispatch a logout event in order to clear
+			// state and storage credentials correctly
+			this.authStore.dispatch(new Auth.LoginRedirect());
+		}
+	}
 }

@@ -56,6 +56,11 @@ export const getSelectedStockItem = createSelector(
 	}
 );
 
+export const getNewStockItem = createSelector(
+	getStockItemEntitiesState,
+	fromHome.getNewStockItem
+);
+
 export const getStockItemCollection = createSelector(
 	getStockItemEntities,
 	getStockItemIdList,

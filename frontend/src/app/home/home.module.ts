@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { HomeTableComponent } from './components/home-table/home-table.component';
@@ -46,13 +47,18 @@ export const COMPONENTS = [
 				canActivate: [AuthGuard]
 			},
 			{
+				path: 'new',
+				component: StockItemPageComponent
+			},
+			{
 				path: ':id',
 				component: StockItemPageComponent,
 				canActivate: [StockItemExistsGuard]
 			}
 		]),
 		StoreModule.forFeature('home', reducers),
-		EffectsModule.forFeature([HomeEffects])
+		EffectsModule.forFeature([HomeEffects]),
+		ImageUploadModule.forRoot()
 	],
 	declarations: COMPONENTS,
 	exports: COMPONENTS,

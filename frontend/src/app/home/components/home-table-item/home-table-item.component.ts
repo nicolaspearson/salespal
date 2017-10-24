@@ -22,63 +22,95 @@ export class HomeTableItemComponent implements OnInit {
 	}
 
 	get id() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.stockItemId;
 	}
 
 	get registrationNumber() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.registrationNumber;
 	}
 
 	get make() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.make;
 	}
 
 	get model() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.model;
 	}
 
 	get modelYear() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.modelYear;
 	}
 
 	get odometer() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.odometer;
 	}
 
 	get colour() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.colour;
 	}
 
 	get vin() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.vin;
 	}
 
 	get retailPrice() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.retailPrice;
 	}
 
 	get costPrice() {
+		if (!this.stockItem) {
+			return '';
+		}
 		return this.stockItem.costPrice;
 	}
 
 	get accessories() {
+		if (!this.stockItem) {
+			return [];
+		}
 		return this.stockItem.accessories;
 	}
 
 	get images() {
+		if (!this.stockItem) {
+			return [];
+		}
 		return this.stockItem.images;
 	}
 
-	get createdAt() {
-		return this.stockItem.createdAt;
-	}
-
-	get updatedAt() {
-		return this.stockItem.updatedAt;
-	}
-
 	get thumbnail(): string | boolean {
-		if (this.stockItem.stockImages && this.stockItem.stockImages.length > 0) {
+		if (
+			this.stockItem &&
+			this.stockItem.stockImages &&
+			this.stockItem.stockImages.length > 0
+		) {
 			return 'data:image/png;base64,' + this.stockItem.stockImages[0].image;
 		}
 		return false;

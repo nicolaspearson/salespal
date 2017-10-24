@@ -6,6 +6,7 @@ import 'rxjs/add/operator/let';
 import * as fromHome from '../../reducers';
 import * as Home from '../../actions/home.actions';
 import { StockItem } from '../../models/stockItem';
+import { Router } from '@angular/router';
 
 import { routerTransition } from '@app/core';
 import { environment as env } from '@env/environment';
@@ -24,11 +25,15 @@ export class HomePageComponent implements OnInit {
 		fromHome.getStockItemCollection
 	);
 
-	constructor(private store: Store<fromHome.State>) {
+	constructor(private store: Store<fromHome.State>, private router: Router) {
 		this.stockItems$ = store.select(fromHome.getStockItemCollection);
 	}
 
 	ngOnInit() {
 		this.store.dispatch(new Home.FetchStockItems());
+	}
+
+	createStockItem() {
+		this.router.navigate(['/items', 'new']);
 	}
 }

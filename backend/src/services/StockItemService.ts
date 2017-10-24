@@ -110,6 +110,8 @@ export default class StockItemService {
 			);
 			stockItem.$createdAt = moment(now).toDate();
 			stockItem.$updatedAt = moment(now).toDate();
+			stockItem.$accessories = stockItem.$accessories || [];
+			stockItem.$images = stockItem.$images || [];
 			// Save the stock item to the database
 			const stockItemResult = await this.stockItemRepository.save(stockItem);
 			return stockItemResult.sanitize();
