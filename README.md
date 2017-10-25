@@ -40,6 +40,24 @@ The frontend was built using AngularJS.
 * [Karma](https://karma-runner.github.io)
 * [Protractor](http://www.protractortest.org/)
 
+### Screenshots
+
+### Login: ###
+
+![Alt text](https://s1.postimg.org/17d5weac33/Screen_Shot_2017-10-24_at_11.09.42_PM.png "Login")
+
+### Stock Items: ###
+
+![Alt text](https://s1.postimg.org/87qy6mnpdb/Screen_Shot_2017-10-24_at_11.10.15_PM.png "Stock Items")
+
+### Stock Items Edit / Delete: ###
+
+![Alt text](https://s1.postimg.org/3vs4z35o5r/Screen_Shot_2017-10-24_at_11.10.34_PM.png "Edit / Delete")
+
+### Stock Items Create: ###
+
+![Alt text](https://s1.postimg.org/70uvjulv0v/Screen_Shot_2017-10-24_at_11.11.25_PM.png "Create")
+
 # Backend #
 
 The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
@@ -55,6 +73,15 @@ The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
 7. Run `npm start` to run the application.
 8. Run `npm run test:unit` to execute the unit tests.
 9. To customize, update the configuration parameters in `./config/default.yml` and the docker compose .yml files
+
+### Auth and Credentials ###
+
+The server automatically creates the following test credentials if there are no users in the database:
+
+* Username: `Tester`
+* Password: `hello123`
+
+You can use these credentials to execute the `../users/login` api call and retrieve a JWT token.
 
 ### Generating new Controllers, Models, Repositories, and Services ###
 
