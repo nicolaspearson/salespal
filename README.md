@@ -46,17 +46,17 @@ The frontend was built using AngularJS.
 
 ![Alt text](https://s1.postimg.org/17d5weac33/Screen_Shot_2017-10-24_at_11.09.42_PM.png "Login")
 
-### Stock Items: ###
+### View Items: ###
 
 ![Alt text](https://s1.postimg.org/87qy6mnpdb/Screen_Shot_2017-10-24_at_11.10.15_PM.png "Stock Items")
 
-### Stock Items Edit / Delete: ###
+### Edit / Delete Items: ###
 
 ![Alt text](https://s1.postimg.org/3vs4z35o5r/Screen_Shot_2017-10-24_at_11.10.34_PM.png "Edit / Delete")
 
-### Stock Items Create: ###
+### Create Items : ###
 
-![Alt text](https://s1.postimg.org/70uvjulv0v/Screen_Shot_2017-10-24_at_11.11.25_PM.png "Create")
+![Alt text](https://s1.postimg.org/5iveei6b8f/Screen_Shot_2017-10-25_at_6.54.23_PM.png "Create")
 
 # Backend #
 
