@@ -7,6 +7,7 @@ import {
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import 'rxjs/add/operator/map';
 
 import * as fromHome from '../../reducers';
 import * as Home from '../../actions/home.actions';
