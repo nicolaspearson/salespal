@@ -1,6 +1,6 @@
-# SALESPAL #
+# README #
 
-This is a SalesPal demo app that use NodeJS, Koa, Typescript, and MongoDB to serve an API, and AngularJS to provide the user interface.
+A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API, and AngularJS to provide the user interface. The frontend and backend have both been written in Typescript.
 
 ### How do I get set up? ###
 
@@ -31,6 +31,14 @@ The frontend was built using AngularJS.
 
 * [AngularJS](https://angular.io/)
 * [Angular Material](https://material.angular.io)
+* [@ngrx/effects](https://www.npmjs.com/package/@ngrx/effects)
+* [@ngrx/entity](https://www.npmjs.com/package/@ngrx/entity)
+* [@ngrx/router-store](https://www.npmjs.com/package/@ngrx/router-store)
+* [@ngrx/store](https://www.npmjs.com/package/@ngrx/store)
+* [@ngrx/store-devtools](https://www.npmjs.com/package/@ngrx/store-devtools)
+* [HammerJS](https://www.npmjs.com/package/hammerjs)
+* [ngrx-store-freeze](https://www.npmjs.com/package/ngrx-store-freeze)
+* [Rxjs](https://www.npmjs.com/package/rxjs)
 * [Socket.IO](https://www.npmjs.com/package/socket.io)
 * [Typescript](https://www.typescriptlang.org/)
 

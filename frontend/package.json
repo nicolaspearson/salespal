@@ -1,7 +1,7 @@
 {
 	"name": "angular.salespal",
 	"version": "1.0.0",
-	"description": "This is a AngularJS SalesPal Demo app",
+	"description": "This is a AngularJS stock item demo app",
 	"author": "Nicolas Pearson",
 	"license": "GPL-3.0+",
 	"repository": {
@@ -16,7 +16,8 @@
 		"lint": "ng lint",
 		"e2e": "ng e2e",
 		"watch": "ng test --browsers ChromeHeadless --reporters spec",
-		"build:prod": "ng build --target production --build-optimizer --vendor-chunk --stats-json",
+		"build:prod":
+			"ng build --target production --build-optimizer --vendor-chunk --stats-json",
 		"clean": "rm -rf ./dist/",
 		"server": "cd dist && http-server",
 		"prod": "npm run clean && npm run build:prod && npm run server"

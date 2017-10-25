@@ -4,7 +4,6 @@ import { StockItem } from '../models/stockItem';
 
 export interface State extends EntityState<StockItem> {
 	selectedStockItemId: string | null;
-	stockItems: StockItem[];
 	ids: string[];
 	error: string | null;
 	loaded: boolean;
@@ -66,7 +65,7 @@ export function reducer(state = initialState, action: Home.Actions): State {
 
 		case Home.UPDATE_STOCK_ITEM_SUCCESS: {
 			return {
-				...state,
+				...adapter.removeOne(action.payload.stockItemId, state),
 				ids: state.ids.filter(id => id !== action.payload.stockItemId)
 			};
 		}
@@ -97,10 +96,6 @@ export function reducer(state = initialState, action: Home.Actions): State {
 		}
 	}
 }
-
-export const getStockItems = (state: State) => {
-	return state.stockItems;
-};
 
 export const getSelectedId = (state: State) => state.selectedStockItemId;
 

@@ -26,11 +26,6 @@ export const getSelectedStockItemId = createSelector(
 	fromHome.getSelectedId
 );
 
-export const getStockItems = createSelector(
-	getStockItemEntitiesState,
-	fromHome.getStockItems
-);
-
 export const getHomePageError = createSelector(
 	getStockItemEntitiesState,
 	fromHome.getError
