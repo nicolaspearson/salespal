@@ -44,10 +44,14 @@ export class StockItemDetailComponent implements OnInit {
 
 	submitUpdate() {
 		if (this.form.valid) {
+			const stockItem: StockItem = this.form.value;
+			stockItem.stockItemId = this.stockItem.stockItemId;
+			stockItem.accessories = this.stockItem.accessories;
+			stockItem.images = this.stockItem.images;
 			if (this.isCreate) {
-				this.add.emit(this.form.value);
+				this.add.emit(stockItem);
 			} else {
-				this.update.emit(this.form.value);
+				this.update.emit(stockItem);
 			}
 		}
 	}

@@ -54,6 +54,7 @@ export class HomeEffects {
 				.catch(error => of(new Home.AddStockItemFailure(error)))
 		);
 
+	@Effect()
 	updateStockItem$: Observable<Action> = this.actions$
 		.ofType(Home.UPDATE_STOCK_ITEM)
 		.map((action: Home.UpdateStockItem) => action.payload)

@@ -26,7 +26,7 @@ export class Database {
 			}
 			const user: User | undefined = await this.userService.createTestAccount();
 			if (user && user !== undefined) {
-				this.appLogger.winston.debug('Test User Added!');
+				this.appLogger.winston.debug('Database: Test User Added!');
 			}
 		} catch (error) {
 			throw error;
