@@ -46,24 +46,28 @@ export default class StockItemService {
 		accessories: string[]
 	): Promise<StockAccessory[]> {
 		const stockAccessories: StockAccessory[] = [];
-		for (const accessory of accessories) {
-			const stockAccessory: StockAccessory = await this.stockAccessoryRepository.findOneById(
-				new ObjectID(accessory)
-			);
-			stockAccessory.sanitize();
-			stockAccessories.push(stockAccessory);
+		if (accessories && accessories.length > 0) {
+			for (const accessory of accessories) {
+				const stockAccessory: StockAccessory = await this.stockAccessoryRepository.findOneById(
+					new ObjectID(accessory)
+				);
+				stockAccessory.sanitize();
+				stockAccessories.push(stockAccessory);
+			}
 		}
 		return stockAccessories;
 	}
 
 	private async getStockImages(images: string[]): Promise<StockImage[]> {
 		const stockImages: StockImage[] = [];
-		for (const image of images) {
-			const stockImage: StockImage = await this.stockImageRepository.findOneById(
-				new ObjectID(image)
-			);
-			stockImage.sanitize();
-			stockImages.push(stockImage);
+		if (images && images.length > 0) {
+			for (const image of images) {
+				const stockImage: StockImage = await this.stockImageRepository.findOneById(
+					new ObjectID(image)
+				);
+				stockImage.sanitize();
+				stockImages.push(stockImage);
+			}
 		}
 		return stockImages;
 	}
@@ -110,8 +114,6 @@ export default class StockItemService {
 			);
 			stockItem.$createdAt = moment(now).toDate();
 			stockItem.$updatedAt = moment(now).toDate();
-			stockItem.$accessories = stockItem.$accessories || [];
-			stockItem.$images = stockItem.$images || [];
 			// Save the stock item to the database
 			const stockItemResult = await this.stockItemRepository.save(stockItem);
 			return stockItemResult.sanitize();

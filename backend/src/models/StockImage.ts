@@ -1,10 +1,4 @@
-import {
-	IsNotEmpty,
-	Length,
-	validate,
-	ValidationArguments,
-	ValidationError
-} from 'class-validator';
+import { IsNotEmpty, validate, ValidationError } from 'class-validator';
 import { ObjectID } from 'mongodb';
 import { Column, Entity, ObjectIdColumn } from 'typeorm';
 import { BadRequestError, HttpError } from '../exceptions';
@@ -29,12 +23,6 @@ export default class StockImage {
 
 	private stockImageId: string;
 
-	@Column({ name: 'name' })
-	@Length(1, 255, {
-		message: (args: ValidationArguments) => {
-			return StockImage.getGenericValidationLengthMessage(args);
-		}
-	})
 	private name: string;
 
 	@Column({ name: 'image', type: 'binary' })
@@ -151,11 +139,5 @@ export default class StockImage {
 			this.image = newImage;
 		}
 		return this;
-	}
-
-	private static getGenericValidationLengthMessage(args: ValidationArguments) {
-		return (
-			'Too short, minimum length is ' + args.constraints[0] + ' characters'
-		);
 	}
 }

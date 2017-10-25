@@ -64,8 +64,14 @@ export function reducer(state = initialState, action: Home.Actions): State {
 			};
 		}
 
+		case Home.UPDATE_STOCK_ITEM_SUCCESS: {
+			return {
+				...state,
+				ids: state.ids.filter(id => id !== action.payload.stockItemId)
+			};
+		}
+
 		case Home.ADD_STOCK_ITEM_SUCCESS:
-		case Home.UPDATE_STOCK_ITEM_SUCCESS:
 		case Home.REMOVE_STOCK_ITEM_FAILURE: {
 			if (state.ids.indexOf(action.payload.stockItemId) > -1) {
 				return state;

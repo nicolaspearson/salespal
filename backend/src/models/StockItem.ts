@@ -1,8 +1,6 @@
 import {
 	IsInt,
 	Length,
-	Max,
-	Min,
 	validate,
 	ValidationArguments,
 	ValidationError
@@ -86,14 +84,10 @@ export default class StockItem {
 
 	@Column({ name: 'model_year', type: 'integer' })
 	@IsInt()
-	@Min(1950)
-	@Max(2100)
 	private modelYear: number;
 
 	@Column({ name: 'odometer', type: 'integer' })
 	@IsInt()
-	@Min(0)
-	@Max(10000000)
 	private odometer: number;
 
 	@Column({ name: 'colour' })

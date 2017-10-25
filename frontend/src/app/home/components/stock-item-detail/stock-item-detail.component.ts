@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { routerTransition } from '@app/core';
 
+import { LocalStorageService } from '../../../core/local-storage/local-storage.service';
+import { LS_USER_KEY } from '../../../core/local-storage/keys';
+import { User } from '../../../auth/models/user';
 import { StockItem } from '../../models/stockItem';
 
 @Component({
@@ -18,11 +21,53 @@ export class StockItemDetailComponent implements OnInit {
 	@Output() remove = new EventEmitter<StockItem>();
 	@Output() update = new EventEmitter<StockItem>();
 
+	imageUploadHeaders: { [name: string]: any };
+
 	isCreate: boolean;
 
 	form: FormGroup;
 
-	constructor(private formBuilder: FormBuilder) {}
+	imageUploadStyle = {
+		selectButton: {
+			'background-color': '#bf1e5b',
+			'border-radius': '4px',
+			color: '#FFF',
+			'box-shadow': 'none'
+		},
+		clearButton: {
+			'background-color': '#000',
+			'border-radius': '4px',
+			color: '#FFFFFF',
+			'margin-left': '10px',
+			'box-shadow': 'none'
+		},
+		layout: {
+			'align-items': 'center',
+			'justify-content': 'center',
+			'background-color': '#424242',
+			'border-radius': '25px',
+			color: '#FFF',
+			'font-size': '10px',
+			margin: '10px',
+			'padding-top': '5px'
+		},
+		previewPanel: {
+			'background-color': '#424242',
+			'border-radius': '0 0 25px 25px'
+		}
+	};
+
+	constructor(
+		private formBuilder: FormBuilder,
+		private localStorageService: LocalStorageService
+	) {
+		const result = this.localStorageService.getItem(LS_USER_KEY);
+		if (result && result.user && result.user.token) {
+			this.imageUploadHeaders = {
+				Authorization: `Bearer ${result.user.token}`
+			};
+		}
+	}
 
 	ngOnInit() {
 		if (this.stockItem.stockItemId === 'new') {
@@ -45,13 +90,37 @@ export class StockItemDetailComponent implements OnInit {
 	submitUpdate() {
 		if (this.form.valid) {
 			const stockItem: StockItem = this.form.value;
-			stockItem.stockItemId = this.stockItem.stockItemId;
 			stockItem.accessories = this.stockItem.accessories;
 			stockItem.images = this.stockItem.images;
+			if (!this.isCreate) {
+				stockItem.stockItemId = this.stockItem.stockItemId;
+			}
 			if (this.isCreate) {
 				this.add.emit(stockItem);
 			} else {
 				this.update.emit(stockItem);
+			}
+		}
+	}
+
+	onUploadFinished(file: any) {
+		if (file && file.serverResponse && file.serverResponse._body) {
+			const body = JSON.parse(file.serverResponse._body);
+			if (body && body.data && body.data.stockImageId) {
+				this.images.push(body.data.stockImageId);
+			}
+		}
+	}
+
+	onRemoved(file: any) {
+		if (file && file.serverResponse && file.serverResponse._body) {
+			const body = JSON.parse(file.serverResponse._body);
+			if (body && body.data && body.data.stockImageId) {
+				const stockImageId = body.data.stockImageId;
+				const index = this.images.indexOf(stockImageId);
+				if (index > -1) {
+					this.images.splice(index, 1);
+				}
 			}
 		}
 	}
