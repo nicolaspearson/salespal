@@ -23,6 +23,7 @@
 		"build:swagger": "node ./dist/tasks/Swagger.js",
 		"debug": "npm run build && npm run watch:debug",
 		"serve": "nodemon dist/index.js",
+		"serve:prod": "NODE_ENV=production npm run serve",
 		"serve:debug":
 			"nodemon --inspect=5858 --debug-brk --ignore false dist/index.js",
 		"watch":
