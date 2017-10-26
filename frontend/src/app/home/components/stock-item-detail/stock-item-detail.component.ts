@@ -6,6 +6,7 @@ import { LocalStorageService } from '../../../core/local-storage/local-storage.s
 import { LS_USER_KEY } from '../../../core/local-storage/keys';
 import { User } from '../../../auth/models/user';
 import { StockItem } from '../../models/stockItem';
+import { environment } from '../../../../environments/environment';
 
 @Component({
 	selector: 'app-stock-item-detail',
@@ -26,6 +27,8 @@ export class StockItemDetailComponent implements OnInit {
 	isCreate: boolean;
 
 	form: FormGroup;
+
+	uploadUrl = `${environment.api.endpoint}/stockImages`;
 
 	imageUploadStyle = {
 		selectButton: {
