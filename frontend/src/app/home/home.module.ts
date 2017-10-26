@@ -64,5 +64,4 @@ export const COMPONENTS = [
 	exports: COMPONENTS,
 	providers: [HomeService, StockItemExistsGuard]
 })
-@NgModule({})
 export class HomeModule {}

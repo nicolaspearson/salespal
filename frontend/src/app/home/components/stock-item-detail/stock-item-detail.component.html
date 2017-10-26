@@ -2,7 +2,7 @@
 	<mat-card-content>
 		<mat-grid-list cols="2" rowHeight="400px">
 			<mat-grid-tile>
-				<form novalidate class="stock__item__detail__form" [formGroup]="form" (ngSubmit)="submit()" [formGroup]="form">
+				<form novalidate class="stock__item__detail__form" [formGroup]="form" (ngSubmit)="submitUpdate()" [formGroup]="form">
 					<mat-form-field class="stock__item__detail__input">
 						<input matInput type="text" formControlName="registrationNumber" placeholder="Registration Number">
 						<mat-error *ngIf="form.get('registrationNumber').touched && form.get('registrationNumber').hasError('required')">
