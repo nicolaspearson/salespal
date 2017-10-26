@@ -36,11 +36,16 @@ export class Database {
 	}
 
 	private getConnectionOptions(): ConnectionOptions {
-		const connectionUrl = `mongodb://${config.get(
-			'server.db.username'
-		)}:${config.get('server.db.password')}@${config.get(
-			'server.db.host'
-		)}:${config.get('server.db.port')}`;
+		let connectionUrl = `mongodb://${config.get('server.db.host')}:${config.get(
+			'server.db.port'
+		)}/${config.get('server.db.database')}`;
+		if (config.get('server.db.auth') === true) {
+			connectionUrl = `mongodb://${config.get(
+				'server.db.username'
+			)}:${config.get('server.db.password')}@${config.get(
+				'server.db.host'
+			)}:${config.get('server.db.port')}/${config.get('server.db.database')}`;
+		}
 		const options: ConnectionOptions = {
 			authSource: config.get('server.db.authSource'),
 			database: config.get('server.db.database'),

@@ -18,6 +18,7 @@ server:
     name: default
     password: root
     port: 27017
+    auth: false
     username: admin
   socket:
     host: localhost
