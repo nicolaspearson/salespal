@@ -3,6 +3,17 @@ import { Container } from 'typedi';
 import { useContainer as ormUseContainer } from 'typeorm';
 import { Application, IApplicationOptions } from './app/Application';
 
+/* tslint:disable no-console */
+process
+.on('unhandledRejection', (reason, promise) => {
+	console.error(reason, 'Unhandled Rejection at Promise', promise);
+	process.exitCode = 1;
+})
+.on('uncaughtException', error => {
+	console.error(error, 'Uncaught Exception thrown');
+	process.exitCode = 1;
+});
+
 async function createApp() {
 	try {
 		if (!Application.getApp() || !Application.getServer()) {
