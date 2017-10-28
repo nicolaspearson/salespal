@@ -15,7 +15,7 @@ const apiDocsPath = config.get('server.api.docs');
 const options = {
 	swaggerDefinition: {
 		info: {
-			title: 'Node API SalesPal',
+			title: 'NodeJS API',
 			version: '1.0.0'
 		},
 		host: apiHost,
@@ -35,7 +35,7 @@ fs.writeFile(
 	error => {
 		if (error) {
 			// tslint:disable no-console
-			console.log(error);
+			console.error(error);
 		}
 	}
 );

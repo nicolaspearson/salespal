@@ -1,4 +1,4 @@
-# Node SALESPAL #
+# NodeJS Backend #
 
 A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API. This project has been written in Typescript.
 

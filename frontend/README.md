@@ -1,4 +1,4 @@
-# Angular SALESPAL #
+# AngularJS Frontend #
 
 This is a demo AngularJS stock item app that provides CRUD operations to store vehicle information.
 
