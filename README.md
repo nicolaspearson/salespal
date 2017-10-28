@@ -1,6 +1,10 @@
 # README #
 
-A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API, and AngularJS to provide the user interface. The frontend and backend have both been written in Typescript. You can visit this page for a [Live Demo](http://lupinemoon.co.za) the login credentials can be found [here](#auth-and-credentials)
+A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API, and AngularJS to provide the user interface. The frontend and backend have both been written in Typescript.
+
+### Demo ###
+
+You can visit this page for a [Live Demo](http://lupinemoon.co.za) the login credentials can be found [here](#auth-and-credentials)
 
 ### How do I get set up? ###
 
@@ -15,6 +19,7 @@ The frontend was built using AngularJS.
 
 ### Running the project ###
 
+2. Navigate into the frontend folder `cd frontend`
 1. Run `npm install / yarn install`
 2. Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build, alternatively use `npm run build:prod`
 3. Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
@@ -54,15 +59,16 @@ The backend is a NodeJS API, built using Koa, Typescript, and MongoDB.
 
 ### Running the project ###
 
-1. Navigate into the backend folder `cd ./backend`
-2. Run `yarn install`
-3. Run `docker-compose up`, this will run the container for the MongoDB.
+1. Navigate into the backend folder `cd backend`
+2. Run `npm install / yarn install`
+3. Run `docker-compose up`, this will run the container for MongoDB.
 4. Run `docker ps` to find the name of the docker container.
 5. Run `docker exec -i -t <docker-container-name> /bin/bash` to open a bash in the container, e.g. `docker exec -i -t salespal /bin/bash`
 6. Run `npm run build` to compile the typescript into the dist folder.
 7. Run `npm start` to run the application.
-8. Run `npm run test:unit` to execute the unit tests.
-9. To customize, update the configuration parameters in `./config/default.yml` and the docker compose .yml files
+8. Run `npm run serve:prod` to run the server in a production environment.
+9. Run `npm run test:unit` to execute the unit tests.
+10. To customize, update the configuration parameters in `./config/default.yml` / `./config/production.yml`  and the docker compose .yml files
 
 ### Auth and Credentials ###
 
@@ -75,15 +81,13 @@ You can use these credentials to execute the `../users/login` api call and retri
 
 ### Generating new Controllers, Models, Repositories, and Services ###
 
-There is generate command available via npm run
-
-This is just helper to get going quicker, if you have a new table 'Fish' in your database,
-you can use this command to help generate all of the boilerplate scaffolding required when using
-the repository pattern:
+There is local a generate script available via `npm run`, that will assist in generating new Controllers, Models, Repositories, and Services. For example, if you have a new table called 'Fish' in your database, you can use this command to help generate all of the boilerplate scaffolding required when using the repository pattern:
 
 * Run `npm run generate`
 * Select the component that you would like to generate, e.g. `All` will generate a Controller, Model, Repository, and Service
-* Provide a name for the component, e.g. `Fish`
+* Provide a name for the component, e.g. `Fish`, if you need to generate a multi-word component please use LetterCasing, e.g. `GoldFish`.
+
+The templates can customized as required in `./src/templates/`
 
 ## Backend technologies used: ##
 

@@ -1,6 +1,6 @@
 # Node SALESPAL #
 
-A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API. This project has been written in typescript.
+A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API. This project has been written in Typescript.
 
 ### How do I get set up? ###
 
@@ -18,18 +18,17 @@ A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provide
 5. Run `npm run build` to compile the typescript into the dist folder.
 6. Run `npm start` to run the application.
 7. Run `npm run test:unit` to execute the unit tests.
+10. To customize, update the configuration parameters in `./config/default.yml` / `./config/production.yml`  and the docker compose .yml files
 
 ### Generating new Controllers, Models, Repositories, and Services ###
 
-There is generate command available via npm run
-
-This is just helper to get going quicker, if you have a new table 'Fish' in your database,
-you can use this command to help generate all of the boilerplate scaffolding required when using
-the repository pattern:
+There is local a generate script available via `npm run`, that will assist in generating new Controllers, Models, Repositories, and Services. For example, if you have a new table called 'Fish' in your database, you can use this command to help generate all of the boilerplate scaffolding required when using the repository pattern:
 
 * Run `npm run generate`
 * Select the component that you would like to generate, e.g. `All` will generate a Controller, Model, Repository, and Service
-* Provide a name for the component, e.g. `Fish`
+* Provide a name for the component, e.g. `Fish`, if you need to generate a multi-word component please use LetterCasing, e.g. `GoldFish`.
+
+The templates can customized as required in `./src/templates/`
 
 ## Technologies used: ##
 
