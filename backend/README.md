@@ -1,6 +1,6 @@
 # Node SALESPAL #
 
-This is a NodeJS SalesPal Demo API, using Koa, Typescript, and MongoDB.
+A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API. This project has been written in typescript.
 
 ### How do I get set up? ###
 

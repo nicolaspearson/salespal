@@ -4,7 +4,7 @@ export const environment = {
 	appName: 'SalesPal',
 	appStoragePrefix: 'SP-PROD-APP-',
 	api: {
-		endpoint: 'http://34.251.192.53/api/v1',
+		endpoint: 'http://lupinemoon.co.za/api/v1',
 		accessToken: 'SecretAccessToken'
 	},
 	envName: 'PROD',

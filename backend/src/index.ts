@@ -4,12 +4,11 @@ import { useContainer as ormUseContainer } from 'typeorm';
 import { Application, IApplicationOptions } from './app/Application';
 
 /* tslint:disable no-console */
-process
-.on('unhandledRejection', (reason, promise) => {
+process.on('unhandledRejection', (reason, promise) => {
 	console.error(reason, 'Unhandled Rejection at Promise', promise);
 	process.exitCode = 1;
-})
-.on('uncaughtException', error => {
+});
+process.on('uncaughtException', error => {
 	console.error(error, 'Uncaught Exception thrown');
 	process.exitCode = 1;
 });
@@ -25,8 +24,8 @@ async function createApp() {
 			} as IApplicationOptions);
 		}
 	} catch (error) {
-		/* tslint:disable no-console */
-		console.log(error);
+		console.error(error, 'Application Exception thrown');
+		process.exitCode = 1;
 	}
 }
 

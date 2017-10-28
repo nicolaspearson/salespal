@@ -1,6 +1,6 @@
 # README #
 
-A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API, and AngularJS to provide the user interface. The frontend and backend have both been written in Typescript.
+A demo MANK stack (MonogoDB, AngularJS, NodeJS, Koa) stock item app that provides CRUD operations to store vehicle information. It makes use of NodeJS, Koa, and MongoDB to serve a RESTful API, and AngularJS to provide the user interface. The frontend and backend have both been written in Typescript. You can visit this page for a [Live Demo](http://lupinemoon.co.za) the login credentials can be found [here](#auth-and-credentials)
 
 ### How do I get set up? ###
 
@@ -16,10 +16,10 @@ The frontend was built using AngularJS.
 ### Running the project ###
 
 1. Run `npm install / yarn install`
-2. Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-3. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-4. Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-5. Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+2. Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build, alternatively use `npm run build:prod`
+3. Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+4. Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+5. Run `npm run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Generating new Components ###
 
@@ -47,24 +47,6 @@ The frontend was built using AngularJS.
 * [Jasmine](https://jasmine.github.io/)
 * [Karma](https://karma-runner.github.io)
 * [Protractor](http://www.protractortest.org/)
-
-### Screenshots
-
-### Login: ###
-
-![Alt text](https://s1.postimg.org/17d5weac33/Screen_Shot_2017-10-24_at_11.09.42_PM.png "Login")
-
-### View Items: ###
-
-![Alt text](https://s1.postimg.org/87qy6mnpdb/Screen_Shot_2017-10-24_at_11.10.15_PM.png "Stock Items")
-
-### Edit / Delete Items: ###
-
-![Alt text](https://s1.postimg.org/3vs4z35o5r/Screen_Shot_2017-10-24_at_11.10.34_PM.png "Edit / Delete")
-
-### Create Items : ###
-
-![Alt text](https://s1.postimg.org/5iveei6b8f/Screen_Shot_2017-10-25_at_6.54.23_PM.png "Create")
 
 # Backend #
 
